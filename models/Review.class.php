@@ -1,16 +1,17 @@
 <?php
-class Comment
+class Review
 {
 	// Propriétés Stockées
 	private $id;
 	private $content;
-	private $id_author;
-	private $id_article;
+	private $id_customer;
+	private $id_item;
 	private $date;
+	private $rate;
 
 	// Propriété Calculée
-	private $author;// class User
-	private $article;// class Article
+	private $customer;// class User 
+	private $item;// class Article
 
 	// Propriété Transmise
 	private $db;
@@ -32,26 +33,26 @@ class Comment
 	// {
 	// 	return $this->id_author;
 	// }
-	public function getArticle()
+	public function getItem()
 	{
-		$manager = new ArticleManager($this->db);
-		$this->article = $manager->findById($this->id_article);
-		return $this->article;
+		$manager = new ItemManager($this->db);
+		$this->item = $manager->findById($this->id_item);
+		return $this->item;
 	}
 	public function getDate()
 	{
 		return $this->date;
 	}
-	public function getAuthor()
+	public function getCustomer()
 	{
 		$manager = new UserManager($this->db);
-		$this->author = $manager->findById($this->id_author);
-		return $this->author;// null
+		$this->customer = $manager->findById($this->id_customer);
+		return $this->customer;// null
 	}
-	public function setAuthor(User $author)
+	public function setCustomer(User $customer)
 	{
-		$this->author = $author;
-		$this->id_author = $author->getId();
+		$this->customer = $customer;
+		$this->id_customer = $customer->getId();
 	}
 	public function setContent($content)
 	{
@@ -59,9 +60,9 @@ class Comment
 		{
 			return "Contenu trop court (< 3)";
 		}
-		else if (strlen($content) > 2047)
+		else if (strlen($content) > 4095)
 		{
-			return "Contenu trop long (> 2047)";
+			return "Contenu trop long (> 4095)";
 		}
 		else
 		{
@@ -72,10 +73,10 @@ class Comment
 	// {
 	// 	$this->id_author = $id_author;
 	// }
-	public function setArticle(Article $article)
+	public function setItem(Item $item)
 	{
-		$this->article = $article;
-		$this->id_article = $article->getId();
+		$this->item = $item;
+		$this->id_item = $item->getId();
 	}
 }
 ?>
