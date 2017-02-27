@@ -5,7 +5,7 @@ class User
 	private $id;
 	private $firstname;
 	private $lastname;
-	private $adress
+	private $adress;
 	private $email;
 	private $password;
 	private $login;
@@ -24,7 +24,7 @@ class User
 	{
 		return $this->firstname;
 	}
-	public function getLastname())
+	public function getLastname()
 	{
 		return $this->lastname;
 	}
