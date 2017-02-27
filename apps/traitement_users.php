@@ -13,7 +13,7 @@ if (isset($_POST['action']))
 	if ($action == "register")
 	{
 		// Etape 1
-		if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['password1'], $_POST['password2']))
+		if (isset($_POST['login'],$_POST['firstname'], $_POST['lastime'], $_POST['birthdate'], $_POST['adress'], $_POST['email'], $_POST['password1'], $_POST['password2']))
 		{
 			// Etape 2
 			$manager = new UserManager($db);
@@ -21,7 +21,7 @@ if (isset($_POST['action']))
 			{
 				// Etape 3
 				// public function create($login, $password1, $password2, $email, $birthdate)
-				$user = $manager->create($_POST['login'], $_POST['password1'], $_POST['password2'], $_POST['email'], $_POST['birthdate']);
+				$user = $manager->create($_POST['login'], $_POST['firstname'], $_POST['lastime'], $_POST['adress'], $_POST['password1'], $_POST['password2'], $_POST['email'], $_POST['birthdate']);
 				if ($user)
 				{
 					// Etape 4
@@ -58,7 +58,7 @@ if (isset($_POST['action']))
 						$_SESSION['login'] = $user->getLogin();
 						$_SESSION['admin'] = $user->isAdmin();
 						// Etape 4
-						header('Location: index.php?page=articles');
+						header('Location: index.php?page=items');
 						exit;
 					}
 					else
