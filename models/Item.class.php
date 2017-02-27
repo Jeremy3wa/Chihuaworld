@@ -8,6 +8,16 @@ class Item
 	private $price;
 	private $description;
 
+
+
+
+	private $db;
+
+	public function __construct($db)
+	{
+		$this->db = $db;
+	}
+
 	/*---------GET-------*/
 	public function getId()
 	{
@@ -39,7 +49,7 @@ class Item
 
 
 
-	public function setName()
+	public function setName($name)
 	{
 		if(strlen($name) > 63)
 		{
@@ -55,7 +65,7 @@ class Item
 		}
 	}
 	
-	public function setIdCategory()
+	public function setIdCategory($id_category)
 	{
 		if($id_category < 0 || is_nan($id_category))
 		{
@@ -66,17 +76,17 @@ class Item
 		$this->id_category;
 		}
 	}
-	public function setStock()
+	public function setStock($stock)
 	{
-		if($stock < 0 || is_nan($id_category))
+		if($stock < 0 || is_nan($stock))
 		{
 			return "Un stock ne peut être négatif"
 		}
 		return $this->stock;
 	}
-	public function setPrice()
+	public function setPrice($price)
 	{
-		if($id_category < 0 || is_nan($id_category))
+		if($price < 0 || is_nan($price))
 		{
 			return "Prix invalide";
 		}
@@ -104,3 +114,5 @@ class Item
 	}
 
 }
+
+?>
