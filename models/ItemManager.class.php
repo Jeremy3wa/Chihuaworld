@@ -88,7 +88,7 @@ class ItemManager
 		$stock = intval($item->getStock());
 		$price = floatval($price->getPrice);
 		$description = mysqli_real_escape_string($this->db, $item->getDescription());
-		$res = mysqli_query($this->db, "INSERT INTO items (description, name, id_category, stock, price) VALUES('".$description."', '".$name."', '".$id_category."', '".$stock."', '".$price"')");
+		$res = mysqli_query($this->db, "INSERT INTO items (description, name, id_category, stock, price) VALUES('".$description."', '".$name."', '".$id_category."', '".$stock."', '".$price."')");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
