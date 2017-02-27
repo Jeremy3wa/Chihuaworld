@@ -1,4 +1,5 @@
-<div class="registration-form">
+<form class="registration-form" method="post">
+	<input type="hidden" name="action" value="register">
 	<div class="container">
 	<div class="dreamcrub">
 			   	 <ul class="breadcrumbs">
@@ -7,47 +8,51 @@
                        <span>&gt;</span>
                     </li>
                     <li class="women">
-                       Registration
+                       s'enregistrer
                     </li>
                 </ul>
                 <ul class="previous">
-                	<li><a href="index.html">Back to Previous Page</a></li>
+                	<li><a href="index.html">page précédente</a></li>
                 </ul>
                 <div class="clearfix"></div>
 			   </div>
-		<h2>Registration</h2>
+		<h2>S'inscrire</h2>
 		<div class="registration-grids">
 			<div class="reg-form">
 				<div class="reg">
-					 <p>Welcome, please enter the following details to continue.</p>
-					 <p>If you have previously registered with us, <a href="#">click here</a></p>
+					 <p>Bienvenue sur Chiuhaworld !</p>
+					 <p>Si vous êtes déjà inscrits <a href="index.php?page=login">cliquez ici.</a></p>
 					 <form>
 						 <ul>
-							 <li class="text-info">First Name: </li>
-							 <li><input type="text" value=""></li>
+							 <li class="text-info">Prénom: </li>
+							 <li><input type="text" name="firstname"></li>
 						 </ul>
 						 <ul>
-							 <li class="text-info">Last Name: </li>
-							 <li><input type="text" value=""></li>
+							 <li class="text-info">Nom: </li>
+							 <li><input type="text" name="lastname"></li>
 						 </ul>				 
 						<ul>
 							 <li class="text-info">Email: </li>
-							 <li><input type="text" value=""></li>
+							 <li><input type="text" name="email"></li>
 						 </ul>
 						 <ul>
-							 <li class="text-info">Password: </li>
-							 <li><input type="password" value=""></li>
+							 <li class="text-info">Date de naissance: </li>
+							 <li><input type="date" name="birthdate"></li>
 						 </ul>
 						 <ul>
-							 <li class="text-info">Re-enter Password:</li>
-							 <li><input type="password" value=""></li>
+							 <li class="text-info">Mot de passe: </li>
+							 <li><input type="password" name="password1"></li>
 						 </ul>
 						 <ul>
-							 <li class="text-info">Mobile Number:</li>
-							 <li><input type="text" value=""></li>
+							 <li class="text-info">Répétez le mot de passe:</li>
+							 <li><input type="password" name="password2"></li>
+						 </ul>
+						 <ul>
+							 <li class="text-info">Adresse:</li>
+							 <li><input type="text" name="adress"></li>
 						 </ul>						
-						 <input type="submit" value="REGISTER NOW">
-						 <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p> 
+						 <input type="submit" name="S'enregistrer">
+						 <p class="click">Lire le règlement général.<a href="#">J'accepte les conditions.</a></p> 
 					 </form>
 				 </div>
 			</div>
@@ -63,4 +68,4 @@
 			<div class="clearfix"></div>
 		</div>
 	</div>
-</div>
+</form>
