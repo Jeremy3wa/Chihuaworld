@@ -6,7 +6,7 @@
 $count = 0;
 while ($count < count($list))// list.length
 {
-	$article = $list[$count];
+	$item = $list[$count];
 	require('views/item_elem.phtml');
 	$count++;
 }
