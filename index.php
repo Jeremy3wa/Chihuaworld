@@ -17,16 +17,27 @@ if (isset($_GET['page']) && in_array($_GET['page'], $access)) // http://php.net/
     $page = $_GET['page'];
 }
 require('models/Exceptions.class.php');
-require('models/User.class.php');
-require('models/Comment.class.php');
-require('models/Article.class.php');
-require('models/UserManager.class.php');
-require('models/CommentManager.class.php');
-require('models/ArticleManager.class.php');
 
-require('apps/traitement_articles.php');
+require('models/UserManager.class.php');
+require('models/User.class.php');
 require('apps/traitement_users.php');
-require('apps/traitement_comments.php');
+
+require('models/Review.class.php');
+require('models/ReviewManager.class.php');
+require('apps/traitement_reviews.php');
+
+require('models/Command.class.php');
+require('models/CommandManager.class.php');
+require('apps/traitement_command.php');
+
+require('models/Item.class.php');
+require('models/ItemManager.class.php');
+require('apps/traitement_items.php');
+
+require('models/CategoryManager.class.php');
+require('models/Category.class.php');
+require('apps/traitement_category.php');
 
 require('apps/skel.php');
+
 ?>
