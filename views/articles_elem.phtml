@@ -1,0 +1,20 @@
+<fieldset class="article">
+	<legend>
+		<a href="index.php?page=article&id=<?=$article->getId()?>">
+			<?=htmlentities($article->getTitle())?>
+		</a>
+	</legend>
+	<p><?=htmlentities($article->getContent())?></p>
+	<small>
+		<strong><?=htmlentities($article->getAuthor()->getLogin())?>, </strong>
+		<span>le <?=$article->getDate()?></span>
+	</small>
+</fieldset>
+<!--
+$article['id'] => $article->getId()
+$article['title'] => $article->getTitle()
+
+$article['login'] => $article->getIdAuthor()
+
+$article['login'] => $article->getAuthor()->getLogin()
+-->

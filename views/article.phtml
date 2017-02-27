@@ -1,0 +1,21 @@
+<h1><?=htmlentities($article->getTitle())?></h1>
+<p><?=htmlentities($article->getContent())?></p>
+<div>
+	<span class="badge">Posted <?=$article->getDate()?></span>
+	<div class="pull-right">
+		<span class="label label-info"><?=htmlentities($article->getAuthor()->getLogin())?></span>
+		<!--<span class="label label-default">alice</span>
+		<span class="label label-primary">story</span>
+		<span class="label label-success">blog</span>
+		<span class="label label-warning">Warning</span>
+		<span class="label label-danger">Danger</span>-->
+	</div>         
+</div>
+<br/>
+<fieldset>
+	<legend>Commentaires</legend>
+	<?php require('apps/create_comment.php'); ?>
+	<div class="block_comments">
+		<?php require('apps/comments.php'); ?>
+	</div>
+</fieldset>
