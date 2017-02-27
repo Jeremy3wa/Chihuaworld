@@ -1,0 +1,100 @@
+<?php
+class ItemManager
+{
+	private $db;
+
+	public function __construct($db)
+	{
+		$this->db = $db;
+	}
+
+	public function findAll()
+	{
+		$list = [];
+		$res = mysqli_query($this->db, "SELECT * FROM items ORDER BY id_category");
+		while ($item = mysqli_fetch_object($res, "Item", [$this->db]))
+		{
+			$list[] = $item;
+		}
+		return $list;
+	}
+
+	public function findById($id)
+	{
+		$id = intval($id);
+		$res = mysqli_query($this->db, "SELECT * FROM items WHERE id='".$id."' LIMIT 1");
+		$item = mysqli_fetch_object($res, "Item", [$this->db]);
+		return $item;
+	}
+
+	public function save(Item $item)
+	{
+		$id = intval($item->getId());
+		$name =  mysqli_real_escape_string($this->db, $item->getName());;
+		$id_category = intval($category->getId());
+		$stock = intval($item->getStock());
+		$price = floatval($price->getPrice);
+		$description = mysqli_real_escape_string($this->db, $item->getDescription());
+		$res = mysqli_query($this->db, "UPDATE items SET description='".$description."', name='".$name."', id_category='".$id_category."', stock='".$stock."', price='".$price."'  WHERE id='".$id."' LIMIT 1");
+		if (!$res)
+		{
+			throw new Exceptions(["Erreur interne"]);
+		}
+		return $this->findById($id);
+	}
+
+		public function remove(Item $item)
+	{
+		$id = intval($item->getId());
+		mysqli_query($this->db, "DELETE from items WHERE id='".$id."' LIMIT 1");
+		return $item;
+	}
+
+	public function create($description, $name, $id_category, $stock, $price)
+	{
+		$errors = [];
+		$item = new item($this->db);
+		$error = $item->setName($name);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+		$error = $item->setIdCategory($id_category);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+		$error = $item->setDescrpition($descrpition);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+		$error = $item->setStock($stock);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+		$error = $item->setPrice($price);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+		if (count($errors) != 0)
+		{
+			throw new Exceptions($errors);
+		}
+		$name =  mysqli_real_escape_string($this->db, $item->getName());;
+		$id_category = intval($category->getId());
+		$stock = intval($item->getStock());
+		$price = floatval($price->getPrice);
+		$description = mysqli_real_escape_string($this->db, $item->getDescription());
+		$res = mysqli_query($this->db, "INSERT INTO items (description, name, id_category, stock, price) VALUES('".$description."', '".$name."', '".$id_category."', '".$stock."', '".$price"')");
+		if (!$res)
+		{
+			throw new Exceptions(["Erreur interne"]);
+		}
+		$id = mysqli_insert_id($this->db);
+		return $this->findById($id);
+	}
+
+}
