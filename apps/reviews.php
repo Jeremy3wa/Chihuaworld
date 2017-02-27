@@ -6,12 +6,12 @@
 // }
 // $manager = new CommentManager($db);
 // $list = $manager->findByArticle($article);
-$list = $article->getComments();
+$list = $item->getReview();
 $count = 0;
 while ($count < count($list))// list.length
 {
-	$comment = $list[$count];
-	require('views/comment.phtml');
+	$review = $list[$count];
+	require('views/reviews.phtml');
 	$count++;
 }
 ?>
