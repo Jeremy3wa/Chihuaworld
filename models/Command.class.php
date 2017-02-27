@@ -50,7 +50,7 @@ class Command
 		$this->user = $user;
 		$this->id_user = $user->getId();
 	}
-	public function getStatus($status)
+	public function setStatus($status)
 	{
 		if (strlen($status) < 3)
 		{

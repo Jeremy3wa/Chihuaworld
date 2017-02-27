@@ -80,7 +80,7 @@ class Item
 	{
 		if($stock < 0 || is_nan($stock))
 		{
-			return "Un stock ne peut être négatif"
+			return "Un stock ne peut être négatif";
 		}
 		return $this->stock;
 	}
