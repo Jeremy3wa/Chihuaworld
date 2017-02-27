@@ -42,11 +42,14 @@ class UserManager
 	{
 		$id = intval($user->getId());
 		$email = mysqli_real_escape_string($this->db, $user->getEmail());
+		$firstname = mysqli_real_escape_string($this->db, $user->getFirstname());
+		$lastname = mysqli_real_escape_string($this->db, $user->getLastname());
+		$adress = mysqli_real_escape_string($this->db, $user->getAdress());
 		$password = mysqli_real_escape_string($this->db, $user->getPassword());
 		$login = mysqli_real_escape_string($this->db, $user->getLogin());
 		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
 		$admin = mysqli_real_escape_string($this->db, $user->getAdmin());
-		$res = mysqli_query($this->db, "UPDATE users SET email='".$email."', password='".$password."', login='".$login."', birthdate='".$birthdate."', admin='".$admin."' WHERE id='".$id."' LIMIT 1");
+		$res = mysqli_query($this->db, "UPDATE users SET email='".$email."',firstname='".$firstname."',lastname='".$lastname."', adress='".$adress."', password='".$password."', login='".$login."', birthdate='".$birthdate."', admin='".$admin."' WHERE id='".$id."' LIMIT 1");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
@@ -61,7 +64,7 @@ class UserManager
 		return $user;
 	}
 	// INSERT
-	public function create($login, $password1, $password2, $email, $birthdate)
+	public function create($login, $firstname, $lastname, $adress, $password1, $password2, $email, $birthdate)
 	{
 		$errors = [];
 		$user = new User();
@@ -70,6 +73,25 @@ class UserManager
 		{
 			$errors[] = $error;
 		}
+
+		$error = $user->setFirstname($firstname);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+
+		$error = $user->setLastname($lastname);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+
+		$error = $user->setAdress($adress);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+
 		$error = $user->setPassword($password1);
 		if ($error)
 		{
@@ -90,10 +112,13 @@ class UserManager
 			throw new Exceptions($errors);
 		}
 		$login = mysqli_real_escape_string($this->db, $user->getLogin());
+		$firstname = mysqli_real_escape_string($this->db, $user->getFistname());
+		$lastname = mysqli_real_escape_string($this->db, $user->getLastname());
+		$adress = mysqli_real_escape_string($this->db, $user->getAdress());
 		$email = mysqli_real_escape_string($this->db, $user->getEmail());
 		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
 		$hash = password_hash($user->getPassword(), PASSWORD_BCRYPT, ["cost"=>11]);
-		$res = mysqli_query($this->db, "INSERT INTO users (email, password, login, birthdate) VALUES('".$email."', '".$hash."', '".$login."', '".$birthdate."')");
+		$res = mysqli_query($this->db, "INSERT INTO users (email, firstname, lastname, adress, password, login, birthdate) VALUES('".$email."','".$firstname."','".$lastname."','".$adress."', '".$hash."', '".$login."', '".$birthdate."')");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);

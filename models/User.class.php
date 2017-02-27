@@ -3,6 +3,9 @@ class User
 {
 	// liste des propriétés -> privées
 	private $id;
+	private $firstname;
+	private $lastname;
+	private $adress
 	private $email;
 	private $password;
 	private $login;
@@ -16,6 +19,18 @@ class User
 	public function getId()
 	{
 		return $this->id;
+	}
+	public function getFirstname()
+	{
+		return $this->firstname;
+	}
+	public function getLastname())
+	{
+		return $this->lastname;
+	}
+	public function getAdress()
+	{
+		return $this->adress;
 	}
 	public function getEmail()
 	{
@@ -79,6 +94,55 @@ class User
 			$this->login = $login;
 		}
 	}
+
+	public function setFirstname ($login)
+	{
+		if (strlen($firstname) < 3)
+		{
+			return "Prénom trop court (< 3)";
+		}
+		else if (strlen($firstname) > 31)
+		{
+			return "Prénom trop long (> 31)";
+		}
+		else
+		{
+			$this->firstname = $firstname;
+		}
+	}
+
+	public function setLastname($lastname)
+	{
+		if (strlen($lastname) < 3)
+		{
+			return "Nom trop court (< 3)";
+		}
+		else if (strlen($lastname) > 31)
+		{
+			return "Nom trop long (> 31)";
+		}
+		else
+		{
+			$this->adress = $adress;
+		}
+	}
+
+	public function setAdress($adress)
+	{
+		if (strlen($adress) < 3)
+		{
+			return "Adresse trop courte (< 3)";
+		}
+		else if (strlen($adress) > 4095)
+		{
+			return "Adresse trop longue (> 4095)";
+		}
+		else
+		{
+			$this->adress = $adress;
+		}
+	}
+
 	public function setBirthdate($birthdate)
 	{
 		// $birthdate => 2017-02-22
