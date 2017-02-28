@@ -1,3 +1,3 @@
 <?php
-require('views/create_reviews.phtml');
+require('views/create_review.phtml');
 ?>
