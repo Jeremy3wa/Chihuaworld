@@ -7,11 +7,16 @@ class CommandManager
 	{
 		$this->db = $db;
 	}
-	public function status(Command $status)
+	public function findByStatus(Command $status)
 	{
 		$status = mysqli_real_escape_string($command->getStatus());
+		$list = [];
 		$res = mysqli_query($this->db, "SELECT * FROM command WHERE status='".$status."' ORDER BY date DESC");
-		$command = mysqli_fetch_object($res, "Command", [$this->db]);
+		while ($user = mysqli_fetch_object($res, "Command", [$this->db]))
+		{
+			$list[] = $status;
+		}
+		return $list;
 		
 	}
 	public function findById($id)
@@ -26,18 +31,22 @@ class CommandManager
 	{	
 		$id_category = intval($category->getId());
 		$list = [];
-		$res = mysqli_query($this->db, "SELECT * FROM items WHERE id_category='".$id_category."' ORDER BY name");
-		while ($user = mysqli_fetch_object($res, "Items", [$this->db])) // $user = new User();
+		$res = mysqli_query($this->db, "SELECT * FROM command WHERE id_category='".$id_category."' ORDER BY name");
+		while ($user = mysqli_fetch_object($res, "Command", [$this->db])) // $user = new User();
 		{
-			$list[] = $items;
+			$list[] = $item;
 		}
 		return $list;
 
 	}
 	public function findByUser(User $user)
 	{
-		$id_users
+		$id_users = intval($user->getId());
+		$res  = mysql_query($this->db, "SELECT * FROM users WHERE ");
+		$command = mysqli_fetch_object($res, "User", [$this->db]);
+		return $command;
 	}
+	
 	public function save(Command $command)
 	{
 		$id = intval($command->getId());
