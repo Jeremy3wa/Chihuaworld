@@ -28,14 +28,12 @@ class Category
 		return $this->description;
 	}
 
-	// public function getItems()
-	// {
+	public function getItems()
+	{
 		$manager = new ItemManager($this->db);
-		$this->items = $manager->findById($this->$name)
+		$this->items = $manager->findById($this);
 		return $this->items;
-	// 	return $this->description;
-	// 	$manager =
-	// }
+	}
 	
 
 
