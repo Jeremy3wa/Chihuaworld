@@ -27,11 +27,20 @@ class CommandManager
 		return $command;
 	}
 
+
+	public function findCartByUser(User $user)
+	{
+		$id_customer = intval($user->getId());
+		$res = mysqli_query($this->db, "SELECT * FROM command WHERE status='panier', id_customer='".$id_customer."' ORDER BY date DESC LIMIT 1");
+		$command = mysqli_fetch_object($res, "Command", [$this->db]); 
+		return $command;
+	}
+
 	
 	public function findByUser(User $user)
 	{
 		$id_user = intval($user->getId());
-		$res  = mysql_query($this->db, "SELECT * FROM users WHERE ");
+		$res  = mysql_query($this->db, "SELECT * FROM users WHERE id_customer='".$id_user."' LIMIT 1");
 		$command = mysqli_fetch_object($res, "User", [$this->db]);
 		while ($user = mysqli_fetch_object($res, "Command", [$this->db]))
 		{
