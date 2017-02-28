@@ -1,7 +1,7 @@
 <div class="col-md-4 product simpleCart_shelfItem text-center">
 	<a href="index.php?page=item&id=1"><img src="./public/images/<?=htmlentities($item->getId())?>.jpg" alt="" /></a>
 	<div class="mask">
-		<a href="index.php?page=item&id=1">Voir l'article</a>
+		<a href="index.php?page=item&id=<?=htmlentities($item->getId())?>">Voir l'article</a>
 	</div>
 	<a class="product_name" href="index.php?page=item&id=<?=htmlentities($item->getId())?>"><?=htmlentities($item->getName())?></a>
 	<p><a class="item_add" href="#"><i></i> <span class="item_price"><?=htmlentities($item->getPrice())?></span> €</a></p>
