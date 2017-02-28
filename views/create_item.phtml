@@ -11,8 +11,12 @@
 						 <ul>
 							 <li class="text-info">Catégorie: </li>
 							 <li><select multiple name="id_category">
-									  <option name="id_category" value="1">wear</option>
-									  <option name="id_category" value="2">accessories</option>
+									  
+								<?php for ($count = 0; $count < count($list); $count++) : ?>
+									  <option><?=$list[$count]->getName()?></option>
+								<?php endfor; ?>
+								
+
 								</select></li>
 						 </ul>
 						 <ul>
