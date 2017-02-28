@@ -10,10 +10,10 @@
 						 </ul>
 						 <ul>
 							 <li class="text-info">Catégorie: </li>
-							 <li><select multiple name="id_category">
+							 <li><select name="id_category">
 									  
 								<?php for ($count = 0; $count < count($list); $count++) : ?>
-									  <option><?=$list[$count]->getName()?></option>
+									  <option value="<?=$list[$count]->getId()?>"><?=$list[$count]->getName()?></option>
 								<?php endfor; ?>
 								
 

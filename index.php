@@ -30,7 +30,7 @@ require('models/ItemManager.class.php');
 require('models/CategoryManager.class.php');
 require('apps/traitement_users.php');
 require('apps/traitement_reviews.php');
-require('apps/traitement_category.php');
+// require('apps/traitement_category.php');
 require('apps/traitement_items.php');
 require('apps/traitement_command.php');
 
