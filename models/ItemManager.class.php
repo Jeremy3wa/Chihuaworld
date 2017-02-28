@@ -30,10 +30,10 @@ class ItemManager
 	public function save(Item $item)
 	{
 		$id = intval($item->getId());
-		$name =  mysqli_real_escape_string($this->db, $item->getName());;
-		$id_category = intval($category->getId());
+		$name =  mysqli_real_escape_string($this->db, $item->getName());
+		$id_category = intval($item->getCategory()->getId());
 		$stock = intval($item->getStock());
-		$price = floatval($price->getPrice);
+		$price = floatval($item->getPrice());
 		$description = mysqli_real_escape_string($this->db, $item->getDescription());
 		$res = mysqli_query($this->db, "UPDATE items SET description='".$description."', name='".$name."', id_category='".$id_category."', stock='".$stock."', price='".$price."'  WHERE id='".$id."' LIMIT 1");
 		if (!$res)
@@ -50,7 +50,7 @@ class ItemManager
 		return $item;
 	}
 
-	public function create($description, $name, $id_category, $stock, $price)
+	public function create($description, $name, Category $category, $stock, $price)
 	{
 		$errors = [];
 		$item = new item($this->db);
@@ -59,12 +59,12 @@ class ItemManager
 		{
 			$errors[] = $error;
 		}
-		$error = $item->setIdCategory($id_category);
+		$error = $item->setCategory($category);
 		if ($error)
 		{
 			$errors[] = $error;
 		}
-		$error = $item->setDescrpition($descrpition);
+		$error = $item->setDescription($description);
 		if ($error)
 		{
 			$errors[] = $error;
@@ -83,10 +83,10 @@ class ItemManager
 		{
 			throw new Exceptions($errors);
 		}
-		$name =  mysqli_real_escape_string($this->db, $item->getName());;
-		$id_category = intval($category->getId());
+		$name =  mysqli_real_escape_string($this->db, $item->getName());
+		$id_category = intval($item->getCategory()->getId());
 		$stock = intval($item->getStock());
-		$price = floatval($price->getPrice);
+		$price = floatval($item->getPrice());
 		$description = mysqli_real_escape_string($this->db, $item->getDescription());
 		$res = mysqli_query($this->db, "INSERT INTO items (description, name, id_category, stock, price) VALUES('".$description."', '".$name."', '".$id_category."', '".$stock."', '".$price."')");
 		if (!$res)

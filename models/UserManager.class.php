@@ -48,7 +48,7 @@ class UserManager
 		$password = mysqli_real_escape_string($this->db, $user->getPassword());
 		$login = mysqli_real_escape_string($this->db, $user->getLogin());
 		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
-		$admin = mysqli_real_escape_string($this->db, $user->getAdmin());
+		$admin = mysqli_real_escape_string($this->db, $user->isAdmin());
 		$res = mysqli_query($this->db, "UPDATE users SET email='".$email."',firstname='".$firstname."',lastname='".$lastname."', adress='".$adress."', password='".$password."', login='".$login."', birthdate='".$birthdate."', admin='".$admin."' WHERE id='".$id."' LIMIT 1");
 		if (!$res)
 		{

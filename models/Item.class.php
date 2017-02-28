@@ -12,6 +12,7 @@ class Item
 
 
 	private $db;
+	private $category;
 
 	public function __construct($db)
 	{
@@ -28,9 +29,11 @@ class Item
 	{
 		return $this->name;
 	}
-	public function getIdCategory()
+	public function getCategory()
 	{
-		return $this->id_category;
+		$manager = new CategoryManager($this->db);
+		$this->category = $manager->findById($this->id_category);
+		return $this->category;
 	}
 	public function getStock()
 	{
@@ -65,7 +68,7 @@ class Item
 		}
 	}
 	
-	public function setIdCategory($id_category)
+	public function setCategory($category)
 	{
 		if($id_category < 0 || is_nan($id_category))
 		{
@@ -73,7 +76,7 @@ class Item
 		}
 		else
 		{
-		$this->id_category;
+		$this->category = $category;
 		}
 	}
 	public function setStock($stock)
@@ -82,7 +85,10 @@ class Item
 		{
 			return "Un stock ne peut être négatif";
 		}
-		return $this->stock;
+		else
+		{
+			$this->stock=$stock;
+		}
 	}
 	public function setPrice($price)
 	{
@@ -92,7 +98,7 @@ class Item
 		}
 		else
 		{
-			return $this->price;
+			$this->price=$price;
 		}
 	}
 	public function setDescription($description)

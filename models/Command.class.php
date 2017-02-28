@@ -5,10 +5,10 @@ class Command
 	private $id;
 	private $status;
 	private $price;
-	private $id_customer;
+	private $id_user;
 	private $date;
 	// Propriété Calculée
-	private $customer;// class User
+	private $user;// class User
 
 	// Propriété Transmise
 	private $db;
@@ -30,22 +30,19 @@ class Command
 	{
 		return $this->price;
 	}
-
-	public function getIdCustomer()
-	{
-		return $this->id_customer;
-	}
 	public function getDate()
 	{
 		return $this->date;
 	}
-	public function getCustomer()
+	public function getUser()
 	{
 		$manager = new UserManager($this->db);
 		$this->user = $manager->findById($this->id_user);
 		return $this->user;// null
 	}
-	public function setCustomer(User $user)
+	
+
+	public function setUser(User $user)
 	{
 		$this->user = $user;
 		$this->id_user = $user->getId();
@@ -54,11 +51,11 @@ class Command
 	{
 		if (strlen($status) < 3)
 		{
-			return "Contenu trop court (< 3)";
+			return "Status de la commande trop court (<3)";
 		}
-		else if (strlen($status) > 2047)
+		else if (strlen($status) > 31)
 		{
-			return "Contenu trop long (> 2047)";
+			return "Contenu trop long (> 31)";
 		}
 		else
 		{
@@ -66,10 +63,7 @@ class Command
 		}
 	}
 
-	public function setIdCustomer($id_customer)
-	{
-		$this->id_customer = $id_customer;
-	}
+	
 
 
 }

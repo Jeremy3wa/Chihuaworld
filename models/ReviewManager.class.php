@@ -12,9 +12,9 @@ class ReviewManager
 		$id_item = intval($item->getId());
 		$list = [];
 		$res = mysqli_query($this->db, "SELECT * FROM reviews WHERE id_item='".$id_item."' ORDER BY date DESC");
-		while ($item = mysqli_fetch_object($res, "Review", [$this->db]))
+		while ($review = mysqli_fetch_object($res, "Review", [$this->db]))
 		{
-			$list[] = $item;
+			$list[] = $review;
 		}
 		return $list;
 	}
@@ -22,8 +22,8 @@ class ReviewManager
 	{
 		$id = intval($id);
 		$res = mysqli_query($this->db, "SELECT * FROM reviews WHERE id='".$id."' LIMIT 1");
-		$item = mysqli_fetch_object($res, "Item", [$this->db]);
-		return $item;
+		$review = mysqli_fetch_object($res, "Item", [$this->db]);
+		return $review;
 	}
 	public function save(Review $review)
 	{
