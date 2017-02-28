@@ -7,21 +7,17 @@ class CommandManager
 	{
 		$this->db = $db;
 	}
-	public function Status(Status $status)
+	public function status(Command $status)
 	{
-		$status = intval($status->getId());
-		$list = [];
-		$res = mysqli_query($this->db, "SELECT * FROM commands WHERE status='".$status."' ORDER BY date DESC");
-		while ($command = mysqli_fetch_object($res, "Command", [$this->db]))
-		{
-			$list[] = $command;
-		}
-		return $list;
+		$status = mysqli_real_escape_string($command->getStatus());
+		$res = mysqli_query($this->db, "SELECT * FROM command WHERE status='".$status."' ORDER BY date DESC");
+		$command = mysqli_fetch_object($res, "Command", [$this->db]);
+		
 	}
 	public function findById($id)
 	{
 		$id = intval($id);
-		$res = mysqli_query($this->db, "SELECT * FROM commands WHERE id='".$id."' LIMIT 1");
+		$res = mysqli_query($this->db, "SELECT * FROM command WHERE id='".$id."' LIMIT 1");
 		$command = mysqli_fetch_object($res, "Command", [$this->db]);
 		return $command;
 	}
@@ -30,8 +26,8 @@ class CommandManager
 		$id = intval($command->getId());
 		$price = mysqli_real_escape_string($this->db, $command->getPrice());
 		$id_customer = intval($command->getCustomer()->getId());
-		$status = intval($command->getIdStatus());
-		$res = mysqli_query($this->db, "UPDATE commands SET price='".$price."', id_customer='".$id_customer."', status='".$status."' WHERE id='".$id."' LIMIT 1");
+		$status = intval($command->getStatus());
+		$res = mysqli_query($this->db, "UPDATE command SET price='".$price."', id_customer='".$id_customer."', status='".$status."' WHERE id='".$id."' LIMIT 1");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
@@ -41,7 +37,7 @@ class CommandManager
 	public function remove(Command $command)
 	{
 		$id = intval($command->getId());
-		mysqli_query($this->db, "DELETE from commands WHERE id='".$id."' LIMIT 1");
+		mysqli_query($this->db, "DELETE from command WHERE id='".$id."' LIMIT 1");
 		return $command;
 	}
 	public function create($price, User $customer, $status)
@@ -53,7 +49,7 @@ class CommandManager
 		{
 			$errors[] = $error;
 		}
-		$error = $command->setIdCustomer($customer);
+		$error = $command->setCustomer($customer);
 		if ($error)
 		{
 			$errors[] = $error;
@@ -71,8 +67,8 @@ class CommandManager
 		// $id_customer = intval($command->getidAuthor());
 		$id_customer = intval($command->getCustomer()->getId());
 
-		$status = intval($command->getIdStatus());
-		$res = mysqli_query($this->db, "INSERT INTO commands (price, id_customer, status) VALUES('".$price."', '".$id_customer."', '".$status."')");
+		$status = intval($command->getStatus());
+		$res = mysqli_query($this->db, "INSERT INTO command (price, id_customer, status) VALUES('".$price."', '".$id_customer."', '".$status."')");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
