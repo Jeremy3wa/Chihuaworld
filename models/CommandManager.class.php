@@ -22,9 +22,21 @@ class CommandManager
 		return $command;
 	}
 
-	public function findByCategory($id_category)
-	{
+	public function findByCategory(Category $category)
+	{	
+		$id_category = intval($category->getId());
+		$list = [];
+		$res = mysqli_query($this->db, "SELECT * FROM items WHERE id_category='".$id_category."' ORDER BY name");
+		while ($user = mysqli_fetch_object($res, "Items", [$this->db])) // $user = new User();
+		{
+			$list[] = $items;
+		}
+		return $list;
 
+	}
+	public function findByUser(User $user)
+	{
+		$id_users
 	}
 	public function save(Command $command)
 	{
