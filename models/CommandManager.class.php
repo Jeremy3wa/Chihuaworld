@@ -21,7 +21,6 @@ class CommandManager
 		$command = mysqli_fetch_object($res, "Command", [$this->db]);
 		return $command;
 	}
-	pulbi
 
 	public function findByCategory($id_category)
 	{
