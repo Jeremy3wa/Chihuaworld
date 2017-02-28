@@ -3,16 +3,16 @@
 			<div class="reg-form">
 				<div class="reg">
 
- 					<form>
+ 					<form method="post">
 						 <ul>
 							 <li class="text-info">Nom de l'article: </li>
 							 <li><input type="text" name="name" id="name" ></li>
 						 </ul>
 						 <ul>
 							 <li class="text-info">Catégorie: </li>
-							 <li><select multiple>
-									  <option value="1">wear</option>
-									  <option value="2">accessories</option>
+							 <li><select multiple name="id_category">
+									  <option name="id_category" value="1">wear</option>
+									  <option name="id_category" value="2">accessories</option>
 								</select></li>
 						 </ul>
 						 <ul>
@@ -26,7 +26,7 @@
 
 						 <ul>
 							 <li class="text-info">Description: </li>
-							 <textarea class="form-control" id="description" name="description" placeholder="description"></textarea>
+							 <textarea  class="form-control" id="description" name="description" placeholder="description"></textarea>
 						 </ul>
 
 		
