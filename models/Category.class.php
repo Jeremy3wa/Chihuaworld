@@ -5,6 +5,9 @@ class Category
 	private $name;
 	private $description;
 
+	private $items;
+	
+
 	private $db;
 
 	public function __construct($db)
@@ -24,6 +27,18 @@ class Category
 	{
 		return $this->description;
 	}
+
+	// public function getItems()
+	// {
+		$manager = new ItemManager($this->db);
+		$this->items = $manager->findById($this->$name)
+		return $this->items;
+	// 	return $this->description;
+	// 	$manager =
+	// }
+	
+
+
 	public function setName($name)
 	{
 		if (strlen($name) > 63)

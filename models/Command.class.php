@@ -30,8 +30,6 @@ class Command
 	{
 		return $this->price;
 	}
-
-	
 	public function getDate()
 	{
 		return $this->date;
@@ -42,6 +40,8 @@ class Command
 		$this->user = $manager->findById($this->id_user);
 		return $this->user;// null
 	}
+	
+
 	public function setUser(User $user)
 	{
 		$this->user = $user;

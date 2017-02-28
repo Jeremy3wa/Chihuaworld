@@ -3,7 +3,7 @@ class Item
 {
 	private $id;
 	private $name;
-	private $category;
+	private $id_category;
 	private $stock;
 	private $price;
 	private $description;
@@ -12,6 +12,7 @@ class Item
 
 
 	private $db;
+	private $category;
 
 	public function __construct($db)
 	{
@@ -30,6 +31,8 @@ class Item
 	}
 	public function getCategory()
 	{
+		$manager = new CategoryManager($this->db);
+		$this->category = $manager->findById($this->id_category);
 		return $this->category;
 	}
 	public function getStock()
