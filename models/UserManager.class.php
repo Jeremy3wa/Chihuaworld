@@ -112,7 +112,7 @@ class UserManager
 			throw new Exceptions($errors);
 		}
 		$login = mysqli_real_escape_string($this->db, $user->getLogin());
-		$firstname = mysqli_real_escape_string($this->db, $user->getFistname());
+		$firstname = mysqli_real_escape_string($this->db, $user->getFirstname());
 		$lastname = mysqli_real_escape_string($this->db, $user->getLastname());
 		$adress = mysqli_real_escape_string($this->db, $user->getAdress());
 		$email = mysqli_real_escape_string($this->db, $user->getEmail());

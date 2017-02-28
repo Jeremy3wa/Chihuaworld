@@ -95,7 +95,7 @@ class User
 		}
 	}
 
-	public function setFirstname ($login)
+	public function setFirstname ($firstname)
 	{
 		if (strlen($firstname) < 3)
 		{
@@ -123,7 +123,7 @@ class User
 		}
 		else
 		{
-			$this->adress = $adress;
+			$this->lastname = $lastname;
 		}
 	}
 
@@ -145,6 +145,13 @@ class User
 
 	public function setBirthdate($birthdate)
 	{
+		$birthdate = str_replace('/','-', $birthdate);
+		$birthdate = str_replace('.','-', $birthdate);
+		$birthdate = str_replace(' ','-', $birthdate);
+		if($birthdate == '')
+		{
+			return "Date invalide";
+		}
 		// $birthdate => 2017-02-22
 		// explode / implode
 		// string => array / array => string
