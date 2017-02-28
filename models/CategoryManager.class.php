@@ -11,7 +11,7 @@ class CategoryManager
 	public function findAll()
 	{
 		$list = [];
-		$res = mysqli_query($this->db, "SELECT * FROM category ORDER BY date DESC");
+		$res = mysqli_query($this->db, "SELECT * FROM category ORDER BY name DESC");
 		while ($category = mysqli_fetch_object($res, "Category", [$this->db]))
 		{
 			$list[] = $category;
