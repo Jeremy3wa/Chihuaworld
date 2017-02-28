@@ -1,6 +1,6 @@
 <?php
 // Etape 0
-var_dump($_POST);
+
 if (isset($_GET['page']) && $_GET['page'] == "logout")
 {
 	session_destroy();
