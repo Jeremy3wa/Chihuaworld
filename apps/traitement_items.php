@@ -2,11 +2,12 @@
 if(isset($_POST['name'], $_POST['id_category'], $_POST['stock'], $_POST['price'], $_POST['description'], $_SESSION['id']))
 {
 	$manager = new ItemManager($db);
-	$categoryManager = new categoryManager($db);
+	$categoryManager = new CategoryManager($db);
+	$category = $categoryManager->findById($_POST['id_category']);
 
 	try
 	{
-		$item = $manager->create($_POST['description'], $_POST['name'], $_POST['id_category'], $_POST['stock'],  $_POST['price']);
+		$item = $manager->create($_POST['description'], $_POST['name'], $category, $_POST['stock'],  $_POST['price']);
 		// $description, $name, $id_category, $stock, $price
 
 		if($item)
@@ -19,7 +20,7 @@ if(isset($_POST['name'], $_POST['id_category'], $_POST['stock'], $_POST['price']
 			$errors[] = "Erreur interne(items)";
 		}
 	}
-	catch(Execptions $e)
+	catch(Exceptions $e)
 	{
 		$errors = $e->getErrors();
 	}
