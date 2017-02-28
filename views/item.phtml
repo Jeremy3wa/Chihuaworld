@@ -1,21 +1,113 @@
-<h1><?=htmlentities($item->getName())?></h1>
-<p><?=htmlentities($item->getDescription())?></p>
-<div>
-	<div class="pull-right">
-		<span class="label label-info"><?=htmlentities($item->getAuthor()->getLogin())?></span>
-		<!--<span class="label label-default">alice</span>
-		<span class="label label-primary">story</span>
-		<span class="label label-success">blog</span>
-		<span class="label label-warning">Warning</span>
-		<span class="label label-danger">Danger</span>-->
-	</div>         
-</div>
-<br/>
-<fieldset>
-	<legend>Commentaires</legend>
-	<?php require('apps/create_review.php'); ?>
+
+<div class="container">
+	   <div class="products-page">
+			<div class="products">
+				<div class="product-listy">
+					<h2>Nos produits</h2>
+					<ul class="product-list">
+						<li><a href="">T-shirts</a></li>
+						<li><a href="">Robes</a></li>
+						<li><a href="">Manteaux</a></li>
+						<li><a href="">Déguisements</a></li>
+						<li><a href="">Accessoires</a></li>
+					</ul>
+				</div>
+			
+				
+
+			</div>
+			<div class="new-product">
+				<div class="col-md-5 zoom-grid">
+					<div class="flexslider">
+						<ul class="slides">
+							<li data-thumb="./public/images/si.jpg">
+								<div class="thumb-image"> <img src="./public/images/si.jpg" data-imagezoom="true" class="img-responsive" alt="" /> </div>
+							</li>
+							
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-7 dress-info">
+					<div class="dress-name">
+						<h3><?=htmlentities($item->getName())?></h3>
+						<span><?=htmlentities($item->getPrice())?></span>
+						<div class="clearfix"></div>
+						<p><?=htmlentities($item->getDescription())?></p>
+					</div>
+					<div class="span span2 hide">
+						<p class="left">STOCK</p>
+						<p class="right">China</p>
+						<div class="clearfix"></div>
+					</div>
+					<div class="span span3">
+						<p class="left">COULEUR</p>
+						<p class="right">Blanc</p>
+						<div class="clearfix"></div>
+					</div>
+					<div class="span span4">
+						<p class="left">TAILLE</p>
+						<p class="right"><span class="selection-box"><select class="domains valid" name="domains">
+										   <option>M</option>
+										   <option>L</option>
+										   <option>XL</option>
+										   <option>FS</option>
+										   <option>S</option>
+									   </select></span></p>
+						<div class="clearfix"></div>
+					</div>
+					<div class="purchase">
+						<a href="#">Acheter</a>
+						<div class="social-icons">
+							<ul>
+								<li><a class="facebook1" href="#"></a></li>
+								<li><a class="twitter1" href="#"></a></li>
+								<li><a class="googleplus1" href="#"></a></li>
+							</ul>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				<script src="./public/js/imagezoom.js"></script>
+					<!-- FlexSlider -->
+					<script defer src="./public/js/jquery.flexslider.js"></script>
+					<script>
+						// Can also be used with $(document).ready()
+						$(window).load(function() {
+						  $('.flexslider').flexslider({
+							animation: "slide",
+							controlNav: "thumbnails"
+						  });
+						});
+					</script>
+				</div>
+				<div class="clearfix"></div>
+					<div class="reviews-tabs">
+      <!-- Main component for a primary marketing message or call to action -->
+      <ul class="nav nav-tabs responsive hidden-xs hidden-sm" id="myTab">
+              <li class="test-class"><a class="deco-none" href="#source">Avis des acheteurs</a></li>
+      </ul>
+
+      <div class="tab-content responsive hidden-xs hidden-sm">
+       	<?php require('apps/create_reviews.php'); ?>
 	<div class="block_comments">
 		<?php require('apps/reviews.php'); ?>
 	</div>
-</fieldset>
+		</div>
+        
+        </div>
+      </div>		
+	</div>
+
+			</div>
+			<div class="clearfix"></div>
+			</div>
+   </div>
+
+
+
+	
+
+
+
+
+
 

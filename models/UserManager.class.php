@@ -112,17 +112,19 @@ class UserManager
 			throw new Exceptions($errors);
 		}
 		$login = mysqli_real_escape_string($this->db, $user->getLogin());
-		$firstname = mysqli_real_escape_string($this->db, $user->getFistname());
+		$firstname = mysqli_real_escape_string($this->db, $user->getFirstname());
 		$lastname = mysqli_real_escape_string($this->db, $user->getLastname());
 		$adress = mysqli_real_escape_string($this->db, $user->getAdress());
 		$email = mysqli_real_escape_string($this->db, $user->getEmail());
 		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
 		$hash = password_hash($user->getPassword(), PASSWORD_BCRYPT, ["cost"=>11]);
 		$res = mysqli_query($this->db, "INSERT INTO users (email, firstname, lastname, adress, password, login, birthdate) VALUES('".$email."','".$firstname."','".$lastname."','".$adress."', '".$hash."', '".$login."', '".$birthdate."')");
-		if (!$res)
-		{
-			throw new Exceptions(["Erreur interne"]);
-		}
+		var_dump(mysqli_error($this->db));
+
+		// if (!$res)
+		// {
+		// 	throw new Exceptions(["Erreur interne"]);
+		// }
 		$id = mysqli_insert_id($this->db);// last_insert_id
 		return $this->findById($id);
 	}
