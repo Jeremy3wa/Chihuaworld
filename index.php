@@ -1,4 +1,5 @@
 <?php
+var_dump($_POST);
 $errors = [];
 // try
 // {
@@ -10,7 +11,7 @@ $errors = [];
 // }
 $db = mysqli_connect("192.168.1.52", "e-commerce", "e-commerce", "e-commerce");
 session_start();// http://php.net/manual/fr/function.session-start.php
-$access = ["items", "login", "register", "item", "edit_item", "command", "create_item"];
+$access = ["items", "login", "register", "item", "edit_item", "command", "create_item", "create_category"];
 $page = "items";
 if (isset($_GET['page']) && in_array($_GET['page'], $access)) // http://php.net/manual/fr/function.in-array.php
 {
