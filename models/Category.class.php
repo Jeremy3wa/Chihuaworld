@@ -28,11 +28,11 @@ class Category
 	{
 		if (strlen($name) > 63)
 		{
-			return "Titre trop long (> 63)";
+			return "Nom de catégorie trop long (> 63)";
 		}
 		else if (strlen($name) < 5)
 		{
-			return "Titre trop court (< 5)";
+			return "Nom de catégorie trop court (< 5)";
 		}
 		else
 		{
@@ -43,11 +43,11 @@ class Category
 	{
 		if (strlen($description) > 4095)
 		{
-			return "Contenu trop long (> 4095)";
+			return "Description du produit trop long (> 4095)";
 		}
 		else if (strlen($description) < 65)
 		{
-			return "Contenu trop court (< 65)";
+			return "Description du produit trop court (< 65)";
 		}
 		else
 		{
