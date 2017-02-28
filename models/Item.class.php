@@ -58,26 +58,19 @@ class Item
 		{
 			return "Nom de produit trop long (> 63)";
 		}
-		else if (strnlen($name) < 5 )
+		else if (strlen($name) < 5 )
 		{
 			return "Nom de produit trop court (< 5)";
 		}
 		else
 		{
-		$this->name = $name;
+			$this->name = $name;
 		}
 	}
-	
-	public function setCategory($category)
+	public function setCategory(Category $category)
 	{
-		if($id_category < 0 || is_nan($id_category))
-		{
-			return "Numéro de catégorie inconnu";	
-		}
-		else
-		{
 		$this->category = $category;
-		}
+		$this->id_category = $category->getId();
 	}
 	public function setStock($stock)
 	{
