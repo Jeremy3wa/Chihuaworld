@@ -56,7 +56,7 @@ class Category
 	{
 		if (strlen($description) > 4095)
 		{
-			return "Description de la catégorie trop longue (> 4095)";
+			return "Description du produit trop longue (> 4095)";
 		}
 		else if (strlen($description) < 10)
 		{
