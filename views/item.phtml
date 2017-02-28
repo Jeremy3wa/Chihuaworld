@@ -1,9 +1,8 @@
-<h1><?=htmlentities($article->getTitle())?></h1>
-<p><?=htmlentities($article->getContent())?></p>
+<h1><?=htmlentities($item->getName())?></h1>
+<p><?=htmlentities($item->getDescription())?></p>
 <div>
-	<span class="badge">Posted <?=$article->getDate()?></span>
 	<div class="pull-right">
-		<span class="label label-info"><?=htmlentities($article->getAuthor()->getLogin())?></span>
+		<span class="label label-info"><?=htmlentities($item->getAuthor()->getLogin())?></span>
 		<!--<span class="label label-default">alice</span>
 		<span class="label label-primary">story</span>
 		<span class="label label-success">blog</span>
@@ -14,9 +13,9 @@
 <br/>
 <fieldset>
 	<legend>Commentaires</legend>
-	<?php require('apps/create_comment.php'); ?>
+	<?php require('apps/create_review.php'); ?>
 	<div class="block_comments">
-		<?php require('apps/comments.php'); ?>
+		<?php require('apps/reviews.php'); ?>
 	</div>
 </fieldset>
 
