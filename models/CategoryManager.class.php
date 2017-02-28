@@ -38,7 +38,7 @@ class CategoryManager
 		return $list;
 
 	}
-	
+
 	public function save(Category $category)
 	{
 		$id = intval($category->getId());

@@ -1,5 +1,5 @@
 <?php
-// var_dump($_POST);
+
 if (isset($_POST['content'], $_POST['id_item'], $_SESSION['id']))
 {
 	// Etape 2

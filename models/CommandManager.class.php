@@ -30,12 +30,12 @@ class CommandManager
 	
 	public function findByUser(User $user)
 	{
-		$id_users = intval($user->getId());
+		$id_user = intval($user->getId());
 		$res  = mysql_query($this->db, "SELECT * FROM users WHERE ");
 		$command = mysqli_fetch_object($res, "User", [$this->db]);
 		while ($user = mysqli_fetch_object($res, "Command", [$this->db]))
 		{
-			$list[] = $status;
+			$list[] = $user;
 		}
 		return $list;
 	}

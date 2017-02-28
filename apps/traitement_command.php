@@ -1,5 +1,4 @@
 <?php
-// var_dump($_POST);
 if (isset($_POST['price'], $_POST['status'], $_SESSION['id']))
 {
 	// Etape 2
