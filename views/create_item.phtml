@@ -4,11 +4,11 @@
 				<div class="reg">
 
  					<form method="post">
-						 <ul>
+						<ul>
 							 <li class="text-info">Nom de l'article: </li>
 							 <li><input type="text" name="name" id="name" ></li>
-						 </ul>
-						 <ul>
+						</ul>
+						<ul>
 							 <li class="text-info">Catégorie: </li>
 							 <li><select name="id_category">
 									  
@@ -18,26 +18,49 @@
 								
 
 								</select></li>
+						</ul>
+						  
+						<ul>
+							 <li class="text-info">Choix de la couleur: </li>
+							 <li>
+								  <select name="color" id="color">
+								 	<option value="Blanc">Blanc</option>
+								 	<option value="Rouge">Rouge</option>
+								 	<option value="Bleu">Bleu</option>
+								 	<option value="Noir">Noir</option>
+								 </select>
+							 </li>
 						 </ul>
-						 <ul>
+						 
+						<ul>
 							 <li class="text-info">Stock: </li>
 							 <li><input type="number" name="stock" id="stock" ></li>
-						 </ul>
-						 <ul>
+						</ul>
+						 
+						<ul>
 							 <li class="text-info">Prix: </li>
 							 <li><input type="number" name="price" id="price" ></li>
-						 </ul>
+						</ul>
 
-						 <ul>
+						<ul>
 							 <li class="text-info">Description: </li>
-							 <textarea  class="form-control" id="description" name="description" placeholder="description"></textarea>
-						 </ul>
+							 <li>
+								 <textarea name="descrption" id="description" cols="30" rows="10"></textarea>
+							 </li>
+							 
+						</ul>
 
-		
-
-
-
-						 </ul>						
+						<ul>
+							 <li class="text-info">Taille disponilbe: </li>
+							 <li>
+								 <select name="size" id="size">
+								 	<option value="XS">XS</option>
+								 	<option value="S">S</option>
+								 	<option value="M">M</option>
+								 	<option value="L">L</option>
+								 </select>
+							 </li>
+						</ul>
 						 <button type="submit" >Submit</button>
 					 </form>
 				</div>

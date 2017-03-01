@@ -30,7 +30,7 @@ class CommandManager
 
 	public function findCartByUser(User $user)
 	{
-		$id_customer = intval($user->getId());
+		$id_customer .= intval($user->getId());
 		$res = mysqli_query($this->db, "SELECT * FROM command WHERE status='panier', id_customer='".$id_customer."' ORDER BY date DESC LIMIT 1");
 		$command = mysqli_fetch_object($res, "Command", [$this->db]); 
 		return $command;
