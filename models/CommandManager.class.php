@@ -40,7 +40,7 @@ class CommandManager
 	public function findByUser(User $user)
 	{
 		$id_user = intval($user->getId());
-		$res  = mysql_query($this->db, "SELECT * FROM users WHERE id_customer='".$id_user."' LIMIT 1");
+		$res  = mysqli_query($this->db, "SELECT * FROM users WHERE id_customer='".$id_user."' LIMIT 1");
 		$command = mysqli_fetch_object($res, "User", [$this->db]);
 		while ($user = mysqli_fetch_object($res, "Command", [$this->db]))
 		{
@@ -52,6 +52,16 @@ class CommandManager
 	public function save(Command $command)
 	{
 		$id = intval($command->getId());
+		
+		$products = $command->getProducts();
+		mysqli_query($this->db, "DELETE FROM link_command_items WHERE id_command='".$id."'");
+		$count = 0;
+		while ($count < count($products))
+		{
+			mysqli_query($this->db, "INSERT INTO link_command_items(id_command, id_products) VALUES('".$id."', '".$products[$count]->getId()."')");
+			$count++;
+		}
+
 		$price = mysqli_real_escape_string($this->db, $command->getPrice());
 		$id_customer = intval($command->getCustomer()->getId());
 		$status = intval($command->getStatus());

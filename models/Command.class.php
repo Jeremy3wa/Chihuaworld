@@ -9,6 +9,7 @@ class Command
 	private $date;
 	// Propriété Calculée
 	private $user;// class User
+	private $products;
 
 	// Propriété Transmise
 	private $db;
@@ -40,7 +41,26 @@ class Command
 		$this->user = $manager->findById($this->id_user);
 		return $this->user;// null
 	}
-	
+
+	public function getProducts()
+	{
+		if ($this->products == null)
+		{
+			$manager = new ItemManager($this->db);
+			$this->products = $manager->findByCommand($this);
+		}
+			return $this->products;
+	}
+
+	public function addProducts(Item $product)
+	{
+		if ($this->products == null)
+		{
+			$this->getProducts();
+		}
+		$this->products[] = $product;
+;
+	}
 
 	public function setUser(User $user)
 	{
