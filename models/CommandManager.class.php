@@ -26,41 +26,45 @@ class CommandManager
 		$command = mysqli_fetch_object($res, "Command", [$this->db]);
 		return $command;
 	}
+
+
+	public function findCartByUser(User $user)
+	{
+		$id_user= intval($user->getId());
+		$res = mysqli_query($this->db, "SELECT * FROM command WHERE status='panier' AND id_customer='".$id_user."' LIMIT 1");
+		$cart = mysqli_fetch_object($res, "Command", [$this->db]); 
+		return $cart;
+	}
+
 	
 	public function findByUser(User $user)
 	{
 		$id_user = intval($user->getId());
-		$res  = mysqli_query($this->db, "SELECT * FROM command WHERE id_customer='".$id_user."'");
-		while ($command = mysqli_fetch_object($res, "Command", [$this->db]))
+		$res  = mysqli_query($this->db, "SELECT * FROM users WHERE id_customer='".$id_user."' LIMIT 1");
+		$command = mysqli_fetch_object($res, "User", [$this->db]);
+		while ($user = mysqli_fetch_object($res, "Command", [$this->db]))
 		{
-			$list[] = $command;
+			$list[] = $user;
 		}
 		return $list;
-	}
-	public function findCartByUser(User $user)
-	{
-		$id_user = intval($user->getId());
-		$res  = mysqli_query($this->db, "SELECT * FROM command WHERE id_customer='".$id_user."' AND status='panier' LIMIT 1");
-		$cart = mysqli_fetch_object($res, "Command", [$this->db]);
-		return $cart;
 	}
 	
 	public function save(Command $command)
 	{
 		$id = intval($command->getId());
 		
-		$products = $command->getItems();
+		$products = $command->getProducts();
 		mysqli_query($this->db, "DELETE FROM link_command_items WHERE id_command='".$id."'");
 		$count = 0;
 		while ($count < count($products))
 		{
-			mysqli_query($this->db, "INSERT INTO link_command_items(id_command, id_items) VALUES('".$id."', '".$products[$count]->getId()."')");
+			mysqli_query($this->db, "INSERT INTO link_command_items(id_command, id_products) VALUES('".$id."', '".$products[$count]->getId()."')");
 			$count++;
 		}
 
 		$price = mysqli_real_escape_string($this->db, $command->getPrice());
-		$id_customer = intval($command->getUser()->getId());
-		$status = mysqli_real_escape_string($this->db, $command->getStatus());
+		$id_customer = intval($command->getCustomer()->getId());
+		$status = intval($command->getStatus());
 		$res = mysqli_query($this->db, "UPDATE command SET price='".$price."', id_customer='".$id_customer."', status='".$status."' WHERE id='".$id."' LIMIT 1");
 		if (!$res)
 		{
@@ -78,20 +82,20 @@ class CommandManager
 	{
 		$errors = [];
 		$command = new Command($this->db);
+		
 		$error = $command->setUser($customer);
 		if ($error)
 		{
 			$errors[] = $error;
 		}
-		if (count($errors) != 0)
-		{
-			throw new Exceptions($errors);
-		}
-		$id_customer = intval($command->getUser()->getId());
+		
+		// $id_customer = intval($command->getidAuthor());
+		$id_customer = intval($command->getUser->getId());
+
 		$res = mysqli_query($this->db, "INSERT INTO command (id_customer) VALUES('".$id_customer."')");
 		if (!$res)
 		{
-			throw new Exceptions(["Erreur interne", mysqli_error($this->db)]);
+			throw new Exceptions(["Erreur interne"]);
 		}
 		$id = mysqli_insert_id($this->db);
 		return $this->findById($id);

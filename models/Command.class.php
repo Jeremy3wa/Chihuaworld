@@ -65,7 +65,7 @@ class Command
 	public function setUser(User $user)
 	{
 		$this->user = $user;
-		$this->id_user = $user->getId();
+		$this->id_customer = $user->getId();
 	}
 	public function setStatus($status)
 	{
