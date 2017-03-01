@@ -9,8 +9,6 @@ class Item
 	private $description;
 	private $review;
 
-
-
 	private $db;
 	private $category;
 
@@ -26,7 +24,9 @@ class Item
 	}
 	public function getReview()
 	{
-		return $this->id;
+		$manager = new ReviewManager($this->db);
+		$this->review = $manager->findByItem($this);
+		return $this->review;
 	}
 
 	public function getName()
@@ -51,7 +51,12 @@ class Item
 	{
 		return $this->description;
 	}
-
+	public function getCustomer()
+	{
+		$manager = new UserManager($this->db);
+		$this->customer = $manager->findById($this->id_customer);
+		return $this->customer;// null
+	}
 	/*---------SET-------*/
 
 
@@ -118,6 +123,11 @@ class Item
 	public function setReview($review)
 	{
 		$this->review = $review;
+	}
+	public function setCustomer(User $customer)
+	{
+		$this->customer = $customer;
+		$this->id_customer = $customer->getId();
 	}
 
 }
