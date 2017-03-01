@@ -12,7 +12,7 @@ class UserManager
 	{
 		$list = [];
 		$res = mysqli_query($this->db, "SELECT * FROM users ORDER BY login");
-		while ($user = mysqli_fetch_object($res, "User")) // $user = new User();
+		while ($user = mysqli_fetch_object($res, "User", [$this->db])) // $user = new User();
 		{
 			$list[] = $user;
 		}
@@ -24,7 +24,7 @@ class UserManager
 		$id = intval($id);
 		// /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
 		$res = mysqli_query($this->db, "SELECT * FROM users WHERE id='".$id."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "User"); // $user = new User();
+		$user = mysqli_fetch_object($res, "User", [$this->db]); // $user = new User();
 		return $user;
 	}
 	// on en a besoin pour la partie login du site internet
@@ -34,7 +34,7 @@ class UserManager
 		$login = mysqli_real_escape_string($this->db, $login);
 		// /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\ /!\
 		$res = mysqli_query($this->db, "SELECT * FROM users WHERE login='".$login."' LIMIT 1");
-		$user = mysqli_fetch_object($res, "User"); // $user = new User();
+		$user = mysqli_fetch_object($res, "User", [$this->db]); // $user = new User();
 		return $user;
 	}
 	// UPDATE
@@ -67,7 +67,7 @@ class UserManager
 	public function create($login, $firstname, $lastname, $adress, $password1, $password2, $email, $birthdate)
 	{
 		$errors = [];
-		$user = new User();
+		$user = new User($this->db);
 		$error = $user->setLogin($login);
 		if ($error)
 		{

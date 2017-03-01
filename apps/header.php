@@ -1,6 +1,8 @@
 <?php
 if (isset($_SESSION['id']))
 {
+	$manager = new UserManager($db);
+	$user = $manager->findById($_SESSION['id']);
 	if (isset($_SESSION['admin']) && $_SESSION['admin'] == true)
 	{
 		require('views/header_admin.phtml');

@@ -7,6 +7,8 @@ class Item
 	private $stock;
 	private $price;
 	private $description;
+	private $size;
+	private $color;
 	private $review;
 
 	private $db;
@@ -21,6 +23,22 @@ class Item
 	public function getId()
 	{
 		return $this->id;
+	}
+	public function getSize()
+	{
+		return explode(',', $this->size);
+	}
+	public function getColor()
+	{
+		return explode(',', $this->color);
+	}
+	public function setSize($size)
+	{
+		$this->size = $size;
+	}
+	public function setColor($color)
+	{
+		$this->color = $color;
 	}
 	public function getReview()
 	{

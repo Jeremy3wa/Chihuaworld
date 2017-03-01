@@ -14,6 +14,8 @@
 			</div>
 		</div>
 		<div class="new-product">
+			<form method="post">
+				<input type="hidden" name="id_item" value="<?=$item->getId()?>">
 			<div class="col-md-5 zoom-grid">
 				<div class="thumb-image"> 
 					<img src="./public/images/<?=htmlentities($item->getId())?>.jpg" data-imagezoom="true" class="img-responsive" alt="" />
@@ -27,32 +29,35 @@
 					<div class="clearfix"></div>
 					<p><?=htmlentities($item->getDescription())?></p>
 				</div>
-				<div class="span span2 hide">
+				<div class="span span2">
 					<p class="left">STOCK</p>
-					<p class="right">China</p>
+					<p class="right"><input type="number" min="1" name="quantity" value="1">/<?=$item->getStock()?></p>
 					<div class="clearfix"></div>
 				</div>
 				<div class="span span3">
 					<p class="left">COULEUR</p>
-					<p class="right">Blanc</p>
+					<p class="right">
+						<select class="domains valid" name="color">
+							<?php foreach($item->getColor() AS $color) : ?>
+						   		<option style="background-color:<?=$color?>;color:white"><?=$color?></option>
+							<?php endforeach; ?>
+					   </select>
+					</p>
 					<div class="clearfix"></div>
 				</div>
 				<div class="span span4">
 					<p class="left">TAILLE</p>
-					<p class="right"><span class="selection-box"><select class="domains valid" name="domains">
-									   <option>M</option>
-									   <option>L</option>
-									   <option>XL</option>
-									   <option>FS</option>
-									   <option>S</option>
-								   </select></span></p>
+					<p class="right"><span class="selection-box">
+						<select class="domains valid" name="size">
+							<?php foreach($item->getSize() AS $size) : ?>
+						   		<option><?=$size?></option>
+							<?php endforeach; ?>
+					   </select>
+								</span></p>
 					<div class="clearfix"></div>
 				</div>
 					<div class="purchase">
-
-						<form method="post">
-							<a href="index.php?page=command&id='.$command->getUser()'">Acheter</a>
-						</form>
+							<input type="submit" value="Acheter">
 
 						<div class="social-icons">
 							<ul>
@@ -63,6 +68,7 @@
 						</div>
 						<div class="clearfix"></div>
 					</div>
+				</form>
 					<script src="./public/js/imagezoom.js"></script>
 					<!-- FlexSlider -->
 					<script defer src="./public/js/jquery.flexslider.js"></script>

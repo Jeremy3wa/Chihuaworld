@@ -12,7 +12,7 @@ class ItemManager
 	{	
 		$id = intval($command->getId());
 		$list = [];
-		$res = mysqli_query($this->db, "SELECT items.* FROM items LEFT JOIN link_command_items ON link_command_items.id_item=items.id WHERE link_command_items.id_command='".$id."'");
+		$res = mysqli_query($this->db, "SELECT items.* FROM items LEFT JOIN link_command_items ON link_command_items.id_items=items.id WHERE link_command_items.id_command='".$id."'");
 		while ($item = mysqli_fetch_object($res, "Item", [$this->db]))
 		{
 			$list[] = $item;

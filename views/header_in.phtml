@@ -5,15 +5,15 @@
 				<div class="header-top-left">
 					<ul>
 						<li><a href="index.php?page=logout"><span class="glyphicon glyphicon-user"> </span>Deconnexion</a></li>
-						<li><a href="#">bienvenue, <strong><?=$_SESSION['login']?></a></li>			
+						<li><a href="#">bienvenue, <strong><?=$user->getLogin()?></a></li>			
 					</ul>
 				</div>
 				<div class="header-right">
 						<div class="cart box_1">
 							<a href="index.php?page=command">
-								<h3> <span class="simpleCart_total"> 0.00 € </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)<img src="./public/images/bag.png" alt=""></h3>
-							</a>	
-							<p><a href="index.php?page=command" class="simpleCart_empty">Panier vide</a></p>
+								<h3> <span class="simpleCart_total"> <?=$user->getCart()->getPrice()?> € </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)<img src="./public/images/bag.png" alt=""></h3>
+							</a>
+							<p><a href="index.php?page=command" class="simpleCart_empty"><?=count($user->getCart()->getItems())?> Objets</a></p>
 							<div class="clearfix"> </div>
 						</div>
 				</div>

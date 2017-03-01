@@ -12,10 +12,23 @@ class User
 	private $birthdate;
 	private $admin;
 
+	private $cart;
+	private $db;
+
+	public function __construct($db)
+	{
+		$this->db = $db;
+	}
 	// méthode secrète public
 
 	// méthodes public
 	// getter
+	public function getCart()
+	{
+		$manager = new CommandManager($this->db);
+		$this->cart = $manager->findCartByUser($this);
+		return $this->cart;
+	}
 	public function getId()
 	{
 		return $this->id;

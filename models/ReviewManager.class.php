@@ -22,7 +22,7 @@ class ReviewManager
 	{
 		$id = intval($id);
 		$res = mysqli_query($this->db, "SELECT * FROM reviews WHERE id='".$id."' LIMIT 1");
-		$review = mysqli_fetch_object($res, "Item", [$this->db]);
+		$review = mysqli_fetch_object($res, "Review", [$this->db]);
 		return $review;
 	}
 	public function save(Review $review)
@@ -44,7 +44,7 @@ class ReviewManager
 		mysqli_query($this->db, "DELETE from reviews WHERE id='".$id."' LIMIT 1");
 		return $review;
 	}
-	public function create($content, User $customer, Item $item)
+	public function create($content, User $customer, Item $item, $rate)
 	{
 		$errors = [];
 		$review = new Review($this->db);
@@ -63,15 +63,20 @@ class ReviewManager
 		{
 			$errors[] = $error;
 		}
+		$error = $review->setRate($rate);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
 		if (count($errors) != 0)
 		{
 			throw new Exceptions($errors);
 		}
 		$content = mysqli_real_escape_string($this->db, $review->getContent());
-		// $id_author = intval($comment->getIdAuthor());
+		$rate = intval($review->getRate());
 		$id_customer = intval($review->getCustomer()->getId());
 		$id_item = intval($review->getItem()->getId());
-		$res = mysqli_query($this->db, "INSERT INTO reviews (content, id_customer, id_item) VALUES('".$content."', '".$id_customer."', '".$id_item."')");
+		$res = mysqli_query($this->db, "INSERT INTO reviews (content, id_customer, id_item, rate) VALUES('".$content."', '".$id_customer."', '".$id_item."', '".$rate."')");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);

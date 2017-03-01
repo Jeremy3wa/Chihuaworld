@@ -1,27 +1,22 @@
 <?php
-if (isset($_POST['price'], $_POST['status'], $_SESSION['id']))
+if (isset($_POST['id_item'], $_POST['quantity'], $_SESSION['id'], $_POST['color'], $_POST['size']))
 {
-	// Etape 2
+	$manager = new CommandManager($db);
 	$userManager = new UserManager($db);
 	$customer = $userManager->findById($_SESSION['id']);
-	$manager = new CommentManager($db);
+	$itemManager = new ItemManager($db);
+	$item = $itemManager->findById($_POST['id_item']);
+	$cart = $customer->getCart();
 	try
 	{
-		// Etape 3
-		//           public function create($price, $id_author, $status) -> CommentManager.class.php ligne 47
-		//           public function create($price, User $author, $status) -> CommentManager.class.php ligne 47
-		// $command = $manager->create($_POST['price'], $_SESSION['id'], $_POST['status']);
-		$command = $manager->create($_POST['price'], $author, $_POST['status']);
-		if ($command)
+		if (!$cart)
 		{
-			// Etape 4
-			header('Location: index.php?page=command&id='.$command->getId());
-			exit;
+			$cart = $manager->create($customer);
 		}
-		else
-		{
-			$errors[] = "Erreur interne";
-		}
+		$cart->addItem($item);
+		$manager->save($cart);
+		header('Location: index.php?page=command&id='.$cart->getId());
+		exit;
 	}
 	catch (Exceptions $e)
 	{

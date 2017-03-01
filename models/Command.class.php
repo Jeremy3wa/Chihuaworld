@@ -5,7 +5,7 @@ class Command
 	private $id;
 	private $status;
 	private $price;
-	private $id_user;
+	private $id_customer;
 	private $date;
 	// Propriété Calculée
 	private $user;// class User
@@ -38,28 +38,28 @@ class Command
 	public function getUser()
 	{
 		$manager = new UserManager($this->db);
-		$this->user = $manager->findById($this->id_user);
+		$this->user = $manager->findById($this->id_customer);
 		return $this->user;// null
 	}
 
-	public function getProducts()
+	public function getItems()
 	{
 		if ($this->products == null)
 		{
 			$manager = new ItemManager($this->db);
 			$this->products = $manager->findByCommand($this);
 		}
-			return $this->products;
+		return $this->products;
 	}
 
-	public function addProducts(Item $product)
+	public function addItem(Item $product)
 	{
 		if ($this->products == null)
 		{
-			$this->getProducts();
+			$this->getItems();
 		}
 		$this->products[] = $product;
-;
+		$this->price += $product->getPrice();
 	}
 
 	public function setUser(User $user)
