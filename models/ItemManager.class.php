@@ -37,7 +37,7 @@ class ItemManager
 		$color = mysqli_escape_string();
 		$size = mysqli_escape_string();
 		$id_item = intva($this->db, $item->getName());
-		$stock_item = ;
+		// $stock_item = ;
 		$description = mysqli_real_escape_string($this->db, $item->getDescription());
 		$res = mysqli_query($this->db, "UPDATE items SET description='".$description."', name='".$name."', id_category='".$id_category."', stock='".$stock."', price='".$price."'  WHERE id='".$id."' LIMIT 1");
 		if (!$res)
