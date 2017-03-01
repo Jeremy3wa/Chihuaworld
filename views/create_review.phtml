@@ -1,12 +1,21 @@
 <form method="POST">
-	<input type="hidden" name="id_item" value="<?=$item->getId()?>">
+	<input type="hidden" name="item" value="<?=$item->getId()?>">
 <div class="reviews-tabs">
     	<div class="form-group">
-		<label for="content">Content</label>
+		<label for="content">Commentaire</label>
 		<textarea class="form-control" name="content"></textarea>
 		</div>
-		<button type="submit" class="btn btn-default">Submit</button>
-	<div class="clearfix"> </div>
 </div>
+<div class="rating">
+	<input type="hidden" name="rate" value="<?=$item->getId()?>">
+<!--
+   --><a href="#5" title="Donner 5 étoiles">☆</a><!--
+   --><a href="#4" title="Donner 4 étoiles">☆</a><!--
+   --><a href="#3" title="Donner 3 étoiles">☆</a><!--
+   --><a href="#2" title="Donner 2 étoiles">☆</a><!--
+   --><a href="#1" title="Donner 1 étoile">☆</a>
+</div>
+	<div class="clearfix"> </div>
+		<button type="submit" class="btn btn-default">Submit</button>
 </form>
 			

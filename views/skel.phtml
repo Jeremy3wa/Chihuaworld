@@ -23,6 +23,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 </head>
 	<body>
+		<style type="text/css">
+.rating {
+direction: rtl;
+}
+.rating a {
+   color: #aaa;
+   text-decoration: none;
+   font-size: 3em;
+   transition: color .4s;
+}
+.rating a:hover,
+.rating a:focus,
+.rating a:hover ~ a,
+.rating a:focus ~ a {
+   color: red;
+   cursor: pointer;
+}</style>
+
 		<?php require('apps/header.php'); ?>
 		<?php //require('apps/intro.php'); ?>
 		<?php require('apps/container.php'); ?>

@@ -43,6 +43,12 @@ class Review
 	{
 		return $this->date;
 	}
+
+	public function getRate()
+	{
+		return $this->rate;
+	}
+	
 	public function getCustomer()
 	{
 		$manager = new UserManager($this->db);
@@ -69,14 +75,16 @@ class Review
 			$this->content = $content;
 		}
 	}
-	// public function setIdAuthor($id_author)
-	// {
-	// 	$this->id_author = $id_author;
-	// }
+
 	public function setItem(Item $item)
 	{
 		$this->item = $item;
 		$this->id_item = $item->getId();
+	}
+
+	public function setRate($rate)
+	{
+		$this->rate = $rate;
 	}
 }
 ?>

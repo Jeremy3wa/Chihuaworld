@@ -53,7 +53,7 @@ class ReviewManager
 		{
 			$errors[] = $error;
 		}
-		$error = $review->setCustomer($cutomer);
+		$error = $review->setCustomer($customer);
 		if ($error)
 		{
 			$errors[] = $error;
