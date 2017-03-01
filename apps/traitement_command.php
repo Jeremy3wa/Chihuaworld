@@ -15,7 +15,7 @@ if (isset($_POST['price'], $_POST['status'], $_SESSION['id']))
 		if ($command)
 		{
 			// Etape 4
-			header('Location: index.php?page=article&id='.$command->getIdCustomer());
+			header('Location: index.php?page=command&id='.$command->getId());
 			exit;
 		}
 		else
