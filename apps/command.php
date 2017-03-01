@@ -5,6 +5,6 @@ if (isset($_SESSION['id']))
 }
 else
 {
-	
+	$errors[]="Vous devez etre connecté pour pouvoir accés au panier";	
 }
 ?>
