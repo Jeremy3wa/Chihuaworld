@@ -1,4 +1,5 @@
 <?php
+
 if(isset($_POST['name'], $_POST['id_category'], $_POST['stock'], $_POST['price'], $_POST['description'], $_SESSION['id']))
 {
 	$manager = new ItemManager($db);
