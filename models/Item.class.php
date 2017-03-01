@@ -7,7 +7,7 @@ class Item
 	private $stock;
 	private $price;
 	private $description;
-
+	private $review;
 
 
 
@@ -21,6 +21,10 @@ class Item
 
 	/*---------GET-------*/
 	public function getId()
+	{
+		return $this->id;
+	}
+	public function getReview()
 	{
 		return $this->id;
 	}
@@ -110,6 +114,10 @@ class Item
 			$this->description = $description;
 		}
 		
+	}
+	public function setReview($review)
+	{
+		$this->review = $review;
 	}
 
 }

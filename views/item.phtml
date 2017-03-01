@@ -1,58 +1,56 @@
 
 <div class="container">
-	   <div class="products-page">
-			<div class="products">
-				<div class="product-listy">
-					<h2>Nos produits</h2>
-					<ul class="product-list">
-						<li><a href="">T-shirts</a></li>
-						<li><a href="">Robes</a></li>
-						<li><a href="">Manteaux</a></li>
-						<li><a href="">Déguisements</a></li>
-						<li><a href="">Accessoires</a></li>
-					</ul>
-				</div>
-			
-				
-
+	<div class="products-page">
+		<div class="products">
+			<div class="product-listy">
+				<h2>Nos produits</h2>
+				<ul class="product-list">
+					<li><a href="">T-shirts</a></li>
+					<li><a href="">Robes</a></li>
+					<li><a href="">Manteaux</a></li>
+					<li><a href="">Déguisements</a></li>
+					<li><a href="">Accessoires</a></li>
+				</ul>
 			</div>
-			<div class="new-product">
-				<div class="col-md-5 zoom-grid">
-					
-								<div class="thumb-image"> <img src="./public/images/<?=htmlentities($item->getId())?>.jpg" data-imagezoom="true" class="img-responsive" alt="" /> </div>
-						
+		</div>
+		<div class="new-product">
+			<div class="col-md-5 zoom-grid">
+				<div class="thumb-image"> 
+					<img src="./public/images/<?=htmlentities($item->getId())?>.jpg" data-imagezoom="true" class="img-responsive" alt="" />
 				</div>
-				<div class="col-md-7 dress-info">
-					<div class="dress-name">
-						<h3><?=htmlentities($item->getName())?></h3>
-						<span><?=htmlentities($item->getPrice())?> €</span>
-						<div class="clearfix"></div>
-						<p><?=htmlentities($item->getDescription())?></p>
-					</div>
-					<div class="span span2 hide">
-						<p class="left">STOCK</p>
-						<p class="right">China</p>
-						<div class="clearfix"></div>
-					</div>
-					<div class="span span3">
-						<p class="left">COULEUR</p>
-						<p class="right">Blanc</p>
-						<div class="clearfix"></div>
-					</div>
-					<div class="span span4">
-						<p class="left">TAILLE</p>
-						<p class="right"><span class="selection-box"><select class="domains valid" name="domains">
-										   <option>M</option>
-										   <option>L</option>
-										   <option>XL</option>
-										   <option>FS</option>
-										   <option>S</option>
-									   </select></span></p>
-						<div class="clearfix"></div>
-					</div>
+						
+			</div>
+			<div class="col-md-7 dress-info">
+				<div class="dress-name">
+					<h3><?=htmlentities($item->getName())?></h3>
+					<span><?=htmlentities($item->getPrice())?> €</span>
+					<div class="clearfix"></div>
+					<p><?=htmlentities($item->getDescription())?></p>
+				</div>
+				<div class="span span2 hide">
+					<p class="left">STOCK</p>
+					<p class="right">China</p>
+					<div class="clearfix"></div>
+				</div>
+				<div class="span span3">
+					<p class="left">COULEUR</p>
+					<p class="right">Blanc</p>
+					<div class="clearfix"></div>
+				</div>
+				<div class="span span4">
+					<p class="left">TAILLE</p>
+					<p class="right"><span class="selection-box"><select class="domains valid" name="domains">
+									   <option>M</option>
+									   <option>L</option>
+									   <option>XL</option>
+									   <option>FS</option>
+									   <option>S</option>
+								   </select></span></p>
+					<div class="clearfix"></div>
+				</div>
 					<div class="purchase">
 
-						<form action="post">
+						<form method="post">
 							<a href="#">Acheter</a>
 						</form>
 
@@ -65,7 +63,7 @@
 						</div>
 						<div class="clearfix"></div>
 					</div>
-				<script src="./public/js/imagezoom.js"></script>
+					<script src="./public/js/imagezoom.js"></script>
 					<!-- FlexSlider -->
 					<script defer src="./public/js/jquery.flexslider.js"></script>
 					<script>
@@ -78,28 +76,26 @@
 						});
 					</script>
 				</div>
-				<div class="clearfix"></div>
-					<div class="reviews-tabs">
-      <!-- Main component for a primary marketing message or call to action -->
-      <ul class="nav nav-tabs responsive hidden-xs hidden-sm" id="myTab">
-              <li class="test-class"><a class="deco-none" href="#source">Avis des acheteurs</a></li>
-      </ul>
-
-      <div class="tab-content responsive hidden-xs hidden-sm">
-       	<?php require('apps/create_review.php'); ?>
-	<div class="block_comments">
-		<?php require('apps/review.php'); ?>
-	</div>
-		</div>
+				<div class="clearfix">
+				</div>
+				<div class="reviews-tabs">
+      <!-- Main component for a primary marketing message or call to action --> 
+      				<ul class="nav nav-tabs">
+              			<li class="test-class">
+              				<a class="deco-none" href="#source">Avis des acheteurs</a>
+              			</li>
+      				</ul>
+	    			<div>
+	       				<?php require('apps/reviews.php'); ?>
+	       				<?php require('apps/create_review.php'); ?>
+					</div>
         
-        </div>
-      </div>		
+        		</div>
+      		</div>		
+		</div>
 	</div>
-
-			</div>
-			<div class="clearfix"></div>
-			</div>
-   </div>
+		<div class="clearfix"></div>
+</div>
 
 
 
