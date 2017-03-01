@@ -51,11 +51,11 @@ class Command
 	{
 		if (strlen($status) < 3)
 		{
-			return "Status de la commande trop court (<3)";
+			return "Statut de la commande trop court (<3)";
 		}
 		else if (strlen($status) > 31)
 		{
-			return "Contenu trop long (> 31)";
+			return "Statut trop long (> 31)";
 		}
 		else
 		{
