@@ -45,7 +45,7 @@ class CategoryManager
 		$id = intval($category->getId());
 		$description = mysqli_real_escape_string($this->db, $category->getDescription());
 		$name = mysqli_real_escape_string($this->db, $category->getName());
-		$res = mysqli_query($this->db, "UPDATE category SET description='".$description."', name='".$name."' WHERE id='".$id."' LIMIT 1");
+		$res = mysqli_query($this->db, "UPDATE category SET name='".$name."', '".$description."' WHERE id='".$id."' LIMIT 1");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
@@ -78,7 +78,7 @@ class CategoryManager
 		}
 		$description = mysqli_real_escape_string($this->db, $category->getDescription());
 		$name = mysqli_real_escape_string($this->db, $category->getName());
-		$res = mysqli_query($this->db, "INSERT INTO category (description, name) VALUES('".$description."', '".$name."')");
+		$res = mysqli_query($this->db, "INSERT INTO category (name, description) VALUES('".$name."', '".$description."')");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
