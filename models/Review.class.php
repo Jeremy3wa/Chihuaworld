@@ -84,7 +84,18 @@ class Review
 
 	public function setRate($rate)
 	{
-		$this->rate = $rate;
+		if($rate<1)
+		{
+			return "Note < 1";
+		}
+		else if ($rate>5)
+		{
+			return "Note > 5";
+		}
+		else
+		{
+			$this->rate=$rate;
+		}
 	}
 }
 ?>
