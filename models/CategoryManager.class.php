@@ -27,18 +27,6 @@ class CategoryManager
 		return $category;
 	}
 
-	public function findByCategory(Category $category)
-	{	
-		$id_category = intval($category->getId());
-		$list = [];
-		$res = mysqli_query($this->db, "SELECT * FROM command WHERE id_category='".$id_category."' ORDER BY name");
-		while ($user = mysqli_fetch_object($res, "Command", [$this->db])) // $user = new User();
-		{
-			$list[] = $item;
-		}
-		return $list;
-
-	}
 
 	public function save(Category $category)
 	{

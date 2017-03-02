@@ -31,7 +31,7 @@ class Category
 	public function getItems()
 	{
 		$manager = new ItemManager($this->db);
-		$this->items = $manager->findById($this);
+		$this->items = $manager->findByCategory($this);
 		return $this->items;
 	}
 	

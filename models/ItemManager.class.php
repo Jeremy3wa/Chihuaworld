@@ -38,6 +38,19 @@ class ItemManager
 		$item = mysqli_fetch_object($res, "Item", [$this->db]);
 		return $item;
 	}
+	public function findByCategory(Category $category)
+	{	
+		$id_category = intval($category->getId());
+		$list = [];
+		$res = mysqli_query($this->db, "SELECT * FROM items WHERE id_category='".$id_category."' ORDER BY name");
+		while ($item = mysqli_fetch_object($res, "Item", [$this->db])) // $user = new User();
+		{
+			$list[] = $item;
+		}
+		return $list;
+
+	}
+
 
 	public function save(Item $item)
 	{
