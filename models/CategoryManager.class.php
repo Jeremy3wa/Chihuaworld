@@ -1,4 +1,5 @@
 <?php
+
 class CategoryManager
 {
 	private $db;
@@ -84,6 +85,7 @@ class CategoryManager
 		}
 		$id = mysqli_insert_id($this->db);
 		return $this->findById($id);
+
 	}
 }
 ?>

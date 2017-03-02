@@ -52,7 +52,7 @@ class ItemManager
 		$id_item = intva($this->db, $item->getName());
 		// $stock_item = ;
 		$description = mysqli_real_escape_string($this->db, $item->getDescription());
-		$res = mysqli_query($this->db, "UPDATE items SET description='".$description."', name='".$name."', id_category='".$id_category."', stock='".$stock."', price='".$price."', picture='".$picture."'  WHERE id='".$id."' LIMIT 1");
+		$res = mysqli_query($this->db, "UPDATE items SET description='".$description."', name='".$name."', id_category='".$id_category."', stock='".$stock."', size='".$size."', price='".$price."', picture='".$picture."'  WHERE id='".$id."' LIMIT 1");
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
@@ -67,7 +67,8 @@ class ItemManager
 		return $item;
 	}
 
-	public function create($description, $name, Category $category, $stock, $price, $picture)
+	public function create($description, $name, Category $category, $stock, $size, $price, $picture)
+
 	{
 		$errors = [];
 		$item = new Item($this->db);
@@ -112,7 +113,8 @@ class ItemManager
 		$price = floatval($item->getPrice());
 		$description = mysqli_real_escape_string($this->db, $item->getDescription());
 		$picture = mysqli_real_escape_string ($this->db, $item->getPicture());
-		$res = mysqli_query($this->db, "INSERT INTO items (description, name, id_category, stock, price, picture) VALUES('".$description."', '".$name."', '".$id_category."', '".$stock."', '".$price."', '".$picture."')");
+		$res = mysqli_query($this->db, "INSERT INTO items (description, name, id_category, stock, size, price, picture) VALUES('".$description."', '".$name."', '".$id_category."', '".$stock."','".$size."', '".$price."', '".$picture."')");
+
 		if (!$res)
 		{
 			throw new Exceptions(["Erreur interne"]);
