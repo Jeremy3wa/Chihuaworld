@@ -1,6 +1,6 @@
 <?php
-
-if(isset($_POST['name'], $_POST['id_category'], $_POST['stock'], $_POST['price'], $_POST['description'], $_SESSION['id']))
+var_dump($_POST);
+if(isset($_POST['description'], $_POST['name'], $_POST['id_category'], $_POST['stock'], $_POST['size'], $_POST['price'], $_SESSION['id']))
 {
 	$manager = new ItemManager($db);
 	$categoryManager = new CategoryManager($db);
@@ -8,7 +8,7 @@ if(isset($_POST['name'], $_POST['id_category'], $_POST['stock'], $_POST['price']
 
 	try
 	{
-		$item = $manager->create($_POST['description'], $_POST['name'], $category, $_POST['stock'],  $_POST['price']);
+		$item = $manager->create($_POST['description'], $_POST['name'], $category, $_POST['stock'], $_POST['size'], $_POST['price']);
 		// $description, $name, $id_category, $stock, $price
 
 		if($item)
