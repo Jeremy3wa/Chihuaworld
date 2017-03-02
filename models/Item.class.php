@@ -10,6 +10,7 @@ class Item
 	private $size;
 	private $color;
 	private $review;
+	private $picture;
 
 	private $db;
 	private $category;
@@ -51,6 +52,12 @@ class Item
 	{
 		return $this->name;
 	}
+
+	public function getPicture()
+	{
+		return $this->picture;
+	}
+
 	public function getCategory()
 	{
 		$manager = new CategoryManager($this->db);
@@ -142,6 +149,12 @@ class Item
 	{
 		$this->review = $review;
 	}
+
+	public function setPicture($picture)
+	{
+		$this->picture = $picture;
+	}
+	
 	public function setCustomer(User $customer)
 	{
 		$this->customer = $customer;
