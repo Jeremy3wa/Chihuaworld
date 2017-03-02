@@ -191,5 +191,10 @@ class User
 	{
 		$this->admin = $admin;
 	}
+
+	public function setCart($cart)
+	{
+		$this->cart = $cart;
+	}
 }
 ?>

@@ -52,14 +52,14 @@ class Command
 		return $this->products;
 	}
 
-	public function addItem(Item $product)
+	public function addItem(Item $products)
 	{
 		if ($this->products == null)
 		{
 			$this->getItems();
 		}
-		$this->products[] = $product;
-		$this->price += $product->getPrice();
+		$this->products[] = $products;
+		$this->price += $products->getPrice();
 	}
 
 	public function setUser(User $user)

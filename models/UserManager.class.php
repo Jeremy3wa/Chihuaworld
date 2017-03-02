@@ -48,6 +48,9 @@ class UserManager
 		$password = mysqli_real_escape_string($this->db, $user->getPassword());
 		$login = mysqli_real_escape_string($this->db, $user->getLogin());
 		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
+
+		$cart = floatval($this->db, $user->getCart());
+
 		$admin = mysqli_real_escape_string($this->db, $user->isAdmin());
 		$res = mysqli_query($this->db, "UPDATE users SET email='".$email."',firstname='".$firstname."',lastname='".$lastname."', adress='".$adress."', password='".$password."', login='".$login."', birthdate='".$birthdate."', admin='".$admin."' WHERE id='".$id."' LIMIT 1");
 		if (!$res)
@@ -64,7 +67,7 @@ class UserManager
 		return $user;
 	}
 	// INSERT
-	public function create($login, $firstname, $lastname, $adress, $password1, $password2, $email, $birthdate)
+	public function create($login, $firstname, $lastname, $adress, $password1, $password2, $email, $birthdate, $cart)
 	{
 		$errors = [];
 		$user = new User($this->db);
@@ -87,6 +90,13 @@ class UserManager
 		}
 
 		$error = $user->setAdress($adress);
+		if ($error)
+		{
+			$errors[] = $error;
+		}
+
+
+		$error = $user->setCart($cart);
 		if ($error)
 		{
 			$errors[] = $error;
@@ -119,7 +129,7 @@ class UserManager
 		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
 		$hash = password_hash($user->getPassword(), PASSWORD_BCRYPT, ["cost"=>11]);
 		$res = mysqli_query($this->db, "INSERT INTO users (email, firstname, lastname, adress, password, login, birthdate) VALUES('".$email."','".$firstname."','".$lastname."','".$adress."', '".$hash."', '".$login."', '".$birthdate."')");
-		var_dump(mysqli_error($this->db));
+		// var_dump(mysqli_error($this->db));
 
 		// if (!$res)
 		// {
