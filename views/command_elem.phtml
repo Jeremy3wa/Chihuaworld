@@ -1,7 +1,8 @@
 <div class="cart-header">
 	 <div class="cart-sec simpleCart_shelfItem">
 			<div class="cart-item cyc">
-				 <img src="./public/images/l1.jpg" class="img-responsive" alt="">
+				<img src="./public/images/<?=htmlentities($item->getId())?>.jpg" alt="" class="img-responsive"/>
+				
 			</div>
 		   <div class="cart-item-info">
 			<h3><a href="index.php?page=item&id=<?=$item->getId()?>"> <?=$item->getName()?> </a><span>Pickup time:</span></h3>
