@@ -1,5 +1,5 @@
 <?php
-var_dump($_POST);
+
 class CategoryManager
 {
 	private $db;

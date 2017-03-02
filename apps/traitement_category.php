@@ -1,17 +1,18 @@
 <?php
 // Etape 1
-if (isset($_POST['name'], $_POST['description'], $_SESSION['id']))
+var_dump($_POST);
+if (isset($_POST['name_cat'], $_POST['description_cat'], $_SESSION['id']))
 {
 	// Etape 2
 	$manager = new CategoryManager($db);
 	// Etape 3
 	try
 	{
-		$article = $manager->create($_POST['name'], $_POST['description']);
-		if ($article)
+		$category = $manager->create($_POST['name_cat'], $_POST['description_cat']);
+		if ($category)
 		{
 			// Etape 4
-			header('Location: index.php?page=category&id='.$article->getId());
+			header('Location: index.php?page=category&id='.$category->getId());
 			exit;
 		}
 		else
