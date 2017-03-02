@@ -10,7 +10,7 @@
 						<li><a href="index.php?page=create_category"><span> </span>Ajouter une catégorie</a></li>			
 					</ul>
 
-					
+
 				</div>
 				<div class="header-right">
 
@@ -19,6 +19,15 @@
 								<h3> <span class="simpleCart_total"> <?=$user->getCart()->getPrice()?> € </span> <img src="./public/images/bag.png" alt=""></h3>
 							</a>
 							<p><a href="index.php?page=command&id=<?=count($user->getCart()->getId())?>" class="simpleCart_empty"><?=count($user->getCart()->getItems())?> Objets</a></p>
+
+								<div class="search">
+							
+								<form method="GET" >
+									<input type='hidden' name="page" value="result">
+									<input type="text" name="mot" class="search-field" placeholder="Rechercher...">
+									<button type ="submit" class="search-button" name="recherche"><i class="fa fa-search"></i></button>
+								</form>
+							</div>
 							<div class="clearfix"> </div>
 						</div>
 				</div>
@@ -57,14 +66,5 @@
 	</nav>
 
 
-	<div class="join">
-					<h6>rechercher</h6>
-					<div class="sub-left-right">
-						<form>
-							<input type="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email Here';}" />
-							<input type="submit" value="rechercher" />
-						</form>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
+
 	
