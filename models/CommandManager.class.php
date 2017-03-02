@@ -58,13 +58,13 @@ class CommandManager
 		$count = 0;
 		while ($count < count($products))
 		{
-			mysqli_query($this->db, "INSERT INTO link_command_items(id_command, id_products) VALUES('".$id."', '".$products[$count]->getId()."')");
+			mysqli_query($this->db, "INSERT INTO link_command_items(id_command, id_items) VALUES('".$id."', '".$products[$count]->getId()."')");
 			$count++;
 		}
 
 		$price = floatval($command->getPrice());
 		$id_customer = intval($command->getUser()->getId());
-		$status = mysqli_real_escape_string($command->getStatus());
+		$status = mysqli_real_escape_string($this->db, $command->getStatus());
 
 		$res = mysqli_query($this->db, "UPDATE command SET price='".$price."', id_customer='".$id_customer."', status='".$status."' WHERE id='".$id."' LIMIT 1");
 		if (!$res)
