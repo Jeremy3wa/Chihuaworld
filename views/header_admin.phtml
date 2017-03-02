@@ -9,8 +9,11 @@
 						<li><a href="index.php?page=create_item"><span class="glyphicon glyphicon-user"> </span>Ajouter des articles</a></li>			
 						<li><a href="index.php?page=create_category"><span> </span>Ajouter une catégorie</a></li>			
 					</ul>
+
+					
 				</div>
 				<div class="header-right">
+
 						<div class="cart box_1">
 							<a href="index.php?page=command&id=<?=count($user->getCart()->getId())?>">
 								<h3> <span class="simpleCart_total"> <?=$user->getCart()->getPrice()?> € </span> <img src="./public/images/bag.png" alt=""></h3>
@@ -52,3 +55,16 @@
 	    </div>
 	    <!--/.navbar-collapse-->
 	</nav>
+
+
+	<div class="join">
+					<h6>rechercher</h6>
+					<div class="sub-left-right">
+						<form>
+							<input type="text" value="E-mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email Here';}" />
+							<input type="submit" value="rechercher" />
+						</form>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+	

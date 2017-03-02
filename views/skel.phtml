@@ -6,8 +6,10 @@
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="public/js/jquery.min.js"></script>
 <!-- Custom Theme files -->
+<link rel="stylesheet" href="public/font-awesome/css/font-awesome.min.css">
 <link href="public/css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- Custom Theme files -->
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Eshop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
@@ -15,12 +17,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--webfont-->
 <!-- for bootstrap working -->
-	<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+	<script type="text/javascript" src="public/js/bootstrap-3.1.1.min.js"></script>
 <!-- //for bootstrap working -->
-<!-- cart -->
-	<script src="js/simpleCart.min.js"> </script>
-<!-- cart -->
-<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="public/css/flexslider.css" type="text/css" media="screen" />
 </head>
 	<body>
 		<style type="text/css">
@@ -34,6 +33,22 @@ direction: rtl;
    transition: color .4s;
 }
 
+.search{
+	margin-left: 10px;
+	display: inline-block;
+	
+}
+
+.search input{
+	background-color: #8A7172;
+	border: solid 1px white;
+	color: white;
+}
+.search-button {
+	border:none;
+	background: none;
+	color: white; 
+}
 
 .rating a:hover,
 .rating a:focus,
@@ -41,7 +56,11 @@ direction: rtl;
 .rating a:focus ~ a {
    color: red;
    cursor: pointer;
-}</style>
+}
+.header-right {
+	height: 15	px;	
+}
+</style>
 
 		<?php require('apps/header.php'); ?>
 		<?php //require('apps/intro.php'); ?>
