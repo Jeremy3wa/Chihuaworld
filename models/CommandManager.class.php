@@ -65,6 +65,7 @@ class CommandManager
 		$price = floatval($command->getPrice());
 		$id_customer = intval($command->getUser()->getId());
 		$status = mysqli_real_escape_string($command->getStatus());
+
 		$res = mysqli_query($this->db, "UPDATE command SET price='".$price."', id_customer='".$id_customer."', status='".$status."' WHERE id='".$id."' LIMIT 1");
 		if (!$res)
 		{
