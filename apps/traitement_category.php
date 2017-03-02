@@ -1,14 +1,14 @@
 <?php
 // Etape 1
 var_dump($_POST);
-if (isset($_POST['name_cat'], $_POST['description_cat'], $_SESSION['id']))
+if (isset($_POST['name'], $_POST['description'], $_SESSION['id']))
 {
 	// Etape 2
 	$manager = new CategoryManager($db);
 	// Etape 3
 	try
 	{
-		$category = $manager->create($_POST['name_cat'], $_POST['description_cat']);
+		$category = $manager->create($_POST['description'], $_POST['name']);
 		if ($category)
 		{
 			// Etape 4
