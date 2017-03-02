@@ -5,11 +5,9 @@
 			<div class="product-listy">
 				<h2>Nos produits</h2>
 				<ul class="product-list">
-					<li><a href="">T-shirts</a></li>
-					<li><a href="">Robes</a></li>
-					<li><a href="">Manteaux</a></li>
-					<li><a href="">Déguisements</a></li>
-					<li><a href="">Accessoires</a></li>
+					<?php foreach ($list AS $category) : ?>
+						<li><a href="index.php?page=id_category=<?=$category->getId()?>"><?=$category->getName()?></a></li>
+					<?php endforeach; ?>
 				</ul>
 			</div>
 		</div>
