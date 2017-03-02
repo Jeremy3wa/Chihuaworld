@@ -16,7 +16,7 @@
 				<input type="hidden" name="id_item" value="<?=$item->getId()?>">
 			<div class="col-md-5 zoom-grid">
 				<div class="thumb-image"> 
-					<img src="./public/images/<?=htmlentities($item->getId())?>.jpg" data-imagezoom="true" class="img-responsive" alt="" />
+					<img src="<?=htmlentities($item->getPicture())?>" data-imagezoom="true" class="img-responsive" alt="images" />
 				</div>
 						
 			</div>

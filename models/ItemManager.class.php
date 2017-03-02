@@ -97,16 +97,19 @@ class ItemManager
 		{
 			$errors[] = $error;
 		}
-		if (count($errors) != 0)
-		{
-			throw new Exceptions($errors);
-		}
 
 		$error = $item->setPicture($picture);
 		if ($error)
 		{
 			$errors[] = $error;
 		}
+		
+		if (count($errors) != 0)
+		{
+			throw new Exceptions($errors);
+		}
+
+		
 		$name =  mysqli_real_escape_string($this->db, $item->getName());
 		$id_category = intval($item->getCategory()->getId());
 		$stock = intval($item->getStock());
