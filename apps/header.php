@@ -1,4 +1,6 @@
 <?php
+$manager = new CategoryManager ($db);
+$list = $manager->findAll();
 if (isset($_SESSION['id']))
 {
 	$manager = new UserManager($db);
