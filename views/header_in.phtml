@@ -43,15 +43,10 @@
 	        <ul class="nav navbar-nav">
 					<li><a href="index.php">Accueil</a></li>
 	        		<?php foreach ($list AS $category) : ?>
-						<li><a href="index.php?page=item&id_category=<?=$category->getId()?>"><?=$category->getName()?></a></li>
+						<li><a href="index.php?page=id_category=<?=$category->getId()?>"><?=$category->getName()?></a></li>
 					<?php endforeach; ?>
 
 
-	        		<?php //require('apps/categories.php'); ?>
-					<!-- <li><a href="index.php">Accueil</a></li>
-		        	<li><a href="index.php">Vêtements</a></li>
-		        	<li><a href="index.php">Accessoires</a></li>
-					<li><a href="index.php">contact</a></li> -->
 					
 	        </ul>
 	    </div>
