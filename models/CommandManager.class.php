@@ -90,7 +90,7 @@ class CommandManager
 		}
 		
 		// $id_customer = intval($command->getidAuthor());
-		$id_customer = intval($command->getUser->getId());
+		$id_customer = intval($command->getUser()->getId());
 
 		$res = mysqli_query($this->db, "INSERT INTO command (id_customer) VALUES('".$id_customer."')");
 		if (!$res)
