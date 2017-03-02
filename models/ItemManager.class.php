@@ -69,7 +69,7 @@ class ItemManager
 	public function create($description, $name, Category $category, $stock, $price)
 	{
 		$errors = [];
-		$item = new item($this->db);
+		$item = new Item($this->db);
 		$error = $item->setName($name);
 		if ($error)
 		{

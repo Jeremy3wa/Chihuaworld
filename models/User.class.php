@@ -27,6 +27,10 @@ class User
 	{
 		$manager = new CommandManager($this->db);
 		$this->cart = $manager->findCartByUser($this);
+		if (!$this->cart)
+		{
+			$this->cart = $manager->create($this);
+		}
 		return $this->cart;
 	}
 	public function getId()

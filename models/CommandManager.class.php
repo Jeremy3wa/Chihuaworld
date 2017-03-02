@@ -32,7 +32,7 @@ class CommandManager
 	{
 		$id_user= intval($user->getId());
 		$res = mysqli_query($this->db, "SELECT * FROM command WHERE status='panier' AND id_customer='".$id_user."' LIMIT 1");
-		$cart = mysqli_fetch_object($res, "Command", [$this->db]); 
+		$cart = mysqli_fetch_object($res, "Command", [$this->db]);
 		return $cart;
 	}
 
@@ -53,7 +53,7 @@ class CommandManager
 	{
 		$id = intval($command->getId());
 		
-		$products = $command->getProducts();
+		$products = $command->getItems();
 		mysqli_query($this->db, "DELETE FROM link_command_items WHERE id_command='".$id."'");
 		$count = 0;
 		while ($count < count($products))
@@ -62,9 +62,9 @@ class CommandManager
 			$count++;
 		}
 
-		$price = mysqli_real_escape_string($this->db, $command->getPrice());
-		$id_customer = intval($command->getCustomer()->getId());
-		$status = intval($command->getStatus());
+		$price = floatval($command->getPrice());
+		$id_customer = intval($command->getUser()->getId());
+		$status = mysqli_real_escape_string($command->getStatus());
 		$res = mysqli_query($this->db, "UPDATE command SET price='".$price."', id_customer='".$id_customer."', status='".$status."' WHERE id='".$id."' LIMIT 1");
 		if (!$res)
 		{
@@ -90,7 +90,7 @@ class CommandManager
 		}
 		
 		// $id_customer = intval($command->getidAuthor());
-		$id_customer = intval($command->getUser->getId());
+		$id_customer = intval($command->getUser()->getId());
 
 		$res = mysqli_query($this->db, "INSERT INTO command (id_customer) VALUES('".$id_customer."')");
 		if (!$res)
