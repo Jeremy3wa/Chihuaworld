@@ -112,7 +112,8 @@ class Item
 	}
 	public function setPrice($price)
 	{
-		if($price < 0 || is_nan($price))
+		$price = floatval($price);
+		if($price <= 0)
 		{
 			return "Prix invalide";
 		}
@@ -121,6 +122,7 @@ class Item
 			$this->price=$price;
 		}
 	}
+
 	public function setDescription($description)
 	{
 
