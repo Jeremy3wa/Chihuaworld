@@ -21,7 +21,7 @@
 							<a href="index.php?page=command&id=<?=$user->getCart()->getId()?>">
 								<h3> <span class="simpleCart_total"> <?=$user->getCart()->getPrice()?> € </span> <img src="./public/images/bag.png" alt=""></h3>
 							</a>
-							<p><a href="index.php?page=command" class="simpleCart_empty"><?=count($user->getCart()->getItems())?> Objets</a></p>
+							<p><a href="index.php?page=command&id=<?=$user->getCart()->getId()?>" class="simpleCart_empty"><?=count($user->getCart()->getItems())?> Objets</a></p>
 							<div class="search">
 							
 								<form method="GET" >
