@@ -8,7 +8,7 @@ if (isset($_POST['content'], $_SESSION['id'], $_POST['id_item'], $_POST['rate'])
 	$item = $itemManager->findById($_POST['id_item']);
 	try
 	{
-		$review = $manager->create($_POST['content'], $customer, $item, $_POST['rate']);
+		$review = $manager->create($_POST['content'], $customer, $item, $_POST['rate'], $_SESSION['id']);
 		if ($review)
 		{
 			header('Location: index.php?page=item&id='.$review->getItem()->getId());
