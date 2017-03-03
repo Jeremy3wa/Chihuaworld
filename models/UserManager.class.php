@@ -49,8 +49,6 @@ class UserManager
 		$login = mysqli_real_escape_string($this->db, $user->getLogin());
 		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
 
-		$cart = floatval($this->db, $user->getCart());
-
 		$admin = mysqli_real_escape_string($this->db, $user->isAdmin());
 		$res = mysqli_query($this->db, "UPDATE users SET email='".$email."',firstname='".$firstname."',lastname='".$lastname."', adress='".$adress."', password='".$password."', login='".$login."', birthdate='".$birthdate."', admin='".$admin."' WHERE id='".$id."' LIMIT 1");
 		if (!$res)
@@ -67,7 +65,7 @@ class UserManager
 		return $user;
 	}
 	// INSERT
-	public function create($login, $firstname, $lastname, $adress, $password1, $password2, $email, $birthdate, $cart)
+	public function create($login, $firstname, $lastname, $adress, $password1, $password2, $email, $birthdate)
 	{
 		$errors = [];
 		$user = new User($this->db);
@@ -95,12 +93,6 @@ class UserManager
 			$errors[] = $error;
 		}
 
-
-		$error = $user->setCart($cart);
-		if ($error)
-		{
-			$errors[] = $error;
-		}
 
 		$error = $user->setPassword($password1);
 		if ($error)
