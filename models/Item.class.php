@@ -108,7 +108,7 @@ class Item
 	}
 	public function setStock($stock)
 	{
-		if($stock < 0 || is_nan($stock))
+		if(strlen($stock) < 0)
 		{
 			return "Un stock ne peut être négatif";
 		}
