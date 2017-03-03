@@ -5,7 +5,7 @@ if (isset($_GET['id']))
 	$command = $manager->findById($_GET['id']);
 	if ($command)
 	{
-		$list = $command->getItems();
+		$list = $command->getItemNbr();
 		foreach ($list AS $item)
 		{
 			require('views/command_elem.phtml');

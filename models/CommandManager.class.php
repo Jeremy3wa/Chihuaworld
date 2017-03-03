@@ -9,7 +9,7 @@ class CommandManager
 	}
 	public function findByStatus($status)
 	{
-		$status = mysqli_real_escape_string($this->db);
+		$status = mysqli_real_escape_string($this->db, $status);
 		$list = [];
 		$res = mysqli_query($this->db, "SELECT * FROM command WHERE status='".$status."' ORDER BY date DESC");
 		while ($user = mysqli_fetch_object($res, "Command", [$this->db]))
@@ -54,14 +54,20 @@ class CommandManager
 		$id = intval($command->getId());
 		
 		$products = $command->getItems();
+		$itemManager = new ItemManager($this->db);
+
 		mysqli_query($this->db, "DELETE FROM link_command_items WHERE id_command='".$id."'");
 		$count = 0;
 		while ($count < count($products))
-		{
+		{	
+			$item = $products[$count];
 			mysqli_query($this->db, "INSERT INTO link_command_items(id_command, id_items) VALUES('".$id."', '".$products[$count]->getId()."')");
 			$count++;
+			$item->setStock($item->getStock() -1);
+			$itemManager->save($item);
 		}
 
+		$id_customer = intval ($command->getUser()->getId());
 		$price = floatval($command->getPrice());
 		$id_customer = intval($command->getUser()->getId());
 		$status = mysqli_real_escape_string($this->db, $command->getStatus());

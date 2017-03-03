@@ -24,7 +24,7 @@ class ItemManager
 		{
 			$id = intval($command->getId());
 			$list = [];
-			$res = mysqli_query($this->db, "SELECT items.*, COUNT(items.id) AS nbr FROM items LEFT JOIN link_command_items ON link_command_items.id_items=items.id WHERE link_command_items.id_command='".$id."'");
+			$res = mysqli_query($this->db, "SELECT items.*, COUNT(items.id) AS nbr FROM items LEFT JOIN link_command_items ON link_command_items.id_items=items.id WHERE link_command_items.id_command='".$id."' GROUP BY items.id");
 			while($items = mysqli_fetch_object($res, "Item", [$this->db]))
 			{
 				$list[] = $items;
@@ -71,8 +71,8 @@ class ItemManager
 		$id_category = intval($item->getCategory()->getId());
 		$stock = intval($item->getStock());
 		$price = floatval($item->getPrice());
+		$size = mysqli_real_escape_string($this->db, implode (',', $item->getSize()));
 		$picture = mysqli_real_escape_string($this->db, $item->getPicture());
-		$id_item = intval($this->db, $item->getName());
 		// $stock_item = ;
 		$description = mysqli_real_escape_string($this->db, $item->getDescription());
 		$res = mysqli_query($this->db, "UPDATE items SET description='".$description."', name='".$name."', id_category='".$id_category."', stock='".$stock."', size='".$size."', price='".$price."', picture='".$picture."'  WHERE id='".$id."' LIMIT 1");
