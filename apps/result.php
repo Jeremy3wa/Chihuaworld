@@ -1,3 +1,13 @@
+<div class="container">
+			<div class="main-content">
+				<div class="online-strip">
+					
+				<div class="products-grid">
+				<header>
+					<h3 class="head text-center">Nos produits</h3>
+				</header>
+				
+
 <?php
 if(isset($_GET['recherche']))
 {
@@ -9,3 +19,14 @@ if(isset($_GET['recherche']))
   } 
 }
 ?>
+
+
+
+				</div>
+
+				<br>
+				<div class="clearfix"></div>
+			</div>
+
+		</div>
+<div>
