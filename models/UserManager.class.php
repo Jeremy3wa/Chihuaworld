@@ -69,46 +69,18 @@ class UserManager
 	{
 		$errors = [];
 		$user = new User($this->db);
-		$error = $user->setLogin($login);
-		if ($error)
-		{
+		if (($error = $user->setEmail($_POST['email'])))
 			$errors[] = $error;
-		}
-
-		$error = $user->setFirstname($firstname);
-		if ($error)
-		{
+		if (($error = $user->setName($_POST['name'])))
 			$errors[] = $error;
-		}
-
-		$error = $user->setLastname($lastname);
-		if ($error)
-		{
+		if (($error = $user->setAddress($_POST['address'])))
 			$errors[] = $error;
-		}
-
-		$error = $user->setAdress($adress);
-		if ($error)
-		{
+		if (($error = $user->setFirstname($_POST['firstname'])))
 			$errors[] = $error;
-		}
-
-
-		$error = $user->setPassword($password1);
-		if ($error)
-		{
+		if (($error = $user->setBirthdate($birthdate)))
 			$errors[] = $error;
-		}
-		$error = $user->setEmail($email);
-		if ($error)
-		{
+		if (($error = $user->initPassword($_POST['password1'], $_POST['password2'])))
 			$errors[] = $error;
-		}
-		$error = $user->setBirthdate($birthdate);
-		if ($error)
-		{
-			$errors[] = $error;
-		}
 		if (count($errors) != 0)
 		{
 			throw new Exceptions($errors);
@@ -119,7 +91,7 @@ class UserManager
 		$adress = mysqli_real_escape_string($this->db, $user->getAdress());
 		$email = mysqli_real_escape_string($this->db, $user->getEmail());
 		$birthdate = mysqli_real_escape_string($this->db, $user->getBirthdate());
-		$hash = password_hash($user->getPassword(), PASSWORD_BCRYPT, ["cost"=>11]);
+		$hash = mysqli_real_escape_string($this->db, $user->getPassword());
 		$res = mysqli_query($this->db, "INSERT INTO users (email, firstname, lastname, adress, password, login, birthdate) VALUES('".$email."','".$firstname."','".$lastname."','".$adress."', '".$hash."', '".$login."', '".$birthdate."')");
 		// var_dump(mysqli_error($this->db));
 

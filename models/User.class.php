@@ -80,22 +80,60 @@ class User
 		else
 			return "Email invalide";
 	}
-	public function setPassword($password)
+
+	public function verifPassword($password)
 	{
-		// $errors[] = "Les mots de passe ne correspondent pas";
-		if (strlen($password) < 6)
+		return password_verify($password, $user->password);
+	}
+
+	public function updatePassword($password, $old_password)
+	{
+		if (strlen($password) > 63)
+		{
+			return "Mot de passe trop long (> 63)";
+		}
+		else if (strlen($password) < 6)
 		{
 			return "Mot de passe trop court (< 6)";
 		}
-		else if (strlen($password) > 74)
+		else if (!$this->verifPassword($old_password))
 		{
-			return "Mot de passe trop long (> 73)";
+			return "L'ancien mot de passe est invalide";
 		}
+		else
+		{
+			$this->password = password_hash($password, PASSWORD_BCRYPT, ["cost"=>11]);
+		}
+	}
+
+		public function initPassword($password1, $password2)
+	{
+		if (strlen($password1) > 63)
+		{
+			return "Mot de passe trop long (> 63)";
+		}
+		else if (strlen($password1) < 6)
+		{
+			return "Mot de passe trop court (< 6)";
+		}
+		else if ($password1 != $password2)
+		{
+			return "Les mots de passe ne correspondent pas";
+		}
+
+		else if ($this->password != null)
+		{
+			return "Vous ne pouvez pas initialiser un mot de passe deja existant";
+		}
+
 		else
 		{
 			$this->password = $password;
 		}
+
+
 	}
+
 	public function setLogin($login)
 	{
 		if (strlen($login) < 3)
