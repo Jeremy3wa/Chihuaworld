@@ -20,6 +20,18 @@ class ItemManager
 		return $list;
 	}
 
+		public function findNbrByCommand(Command $command)
+		{
+			$id = intval($command->getId());
+			$list = [];
+			$res = mysqli_query($this->db, "SELECT items.*, COUNT(items.id) AS nbr FROM items LEFT JOIN link_command_items ON link_command_items.id_items=items.id WHERE link_command_items.id_command='".$id."'");
+			while($items = mysqli_fetch_object($res, "Item", [$this->db]))
+			{
+				$list[] = $items;
+			}
+			return $list;
+		}
+
 	public function findAll()
 	{
 		$list = [];
