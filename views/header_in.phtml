@@ -7,7 +7,7 @@
 					<ul>
 
 						<li><a href="index.php?page=logout"><span class="glyphicon glyphicon-user"> </span>Deconnexion</a></li>
-						<li><a href="#">bienvenue, <strong><?=$user->getLogin()?></a></li>			
+						<li><a href="#">bienvenue, <strong><?=htmlentities($user->getLogin())?></a></li>			
 					</ul>
 					
 				</div>
