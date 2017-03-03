@@ -72,9 +72,7 @@ class ItemManager
 		$stock = intval($item->getStock());
 		$price = floatval($item->getPrice());
 		$picture = mysqli_real_escape_string($this->db, $item->getPicture());
-		$color = mysqli_escape_string();
-		$size = mysqli_escape_string();
-		$id_item = intva($this->db, $item->getName());
+		$id_item = intval($this->db, $item->getName());
 		// $stock_item = ;
 		$description = mysqli_real_escape_string($this->db, $item->getDescription());
 		$res = mysqli_query($this->db, "UPDATE items SET description='".$description."', name='".$name."', id_category='".$id_category."', stock='".$stock."', size='".$size."', price='".$price."', picture='".$picture."'  WHERE id='".$id."' LIMIT 1");
