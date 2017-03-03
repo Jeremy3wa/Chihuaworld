@@ -9,8 +9,8 @@
 	<div class="mask">
 		<a href="index.php?page=item&id=<?=htmlentities($item->getId())?>">Voir l'article</a>
 	</div>
-	<td class="post_thumbnail" align="center"><a a class="product_name"><?=$item->getName()?></a></td>
-	<td class="post_thumbnail" align="center"><a class="item_add" href="#"><i></i> <span class="item_price"><?=$item->getPrice()?></span> €</a></p></td>
+	<td class="post_thumbnail" align="center"><a a class="product_name"><?=htmlentities($item->getName())?></a></td>
+	<td class="post_thumbnail" align="center"><a class="item_add" href="#"><i></i> <span class="item_price"><?=htmlentities($item->getPrice())?></span> €</a></p></td>
 </div>
 
 
