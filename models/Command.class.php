@@ -52,6 +52,16 @@ class Command
 		return $this->products;
 	}
 
+		public function getItemNbr()
+	{
+		if ($this->products == null)
+		{
+			$manager = new ItemManager($this->db);
+			$this->products = $manager->findNbrByCommand($this);
+		}
+		return $this->products;
+	}
+
 	public function addItem(Item $products)
 	{
 		if ($this->products == null)
