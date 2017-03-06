@@ -20,8 +20,14 @@
 			 <?php require('apps/command_elem.php'); ?>
 		
 					   <div class="clearfix"></div>
+					   	<form class="form" method="POST">
+							<input type="hidden" name="action" value="v_order">
+							   	<div>
+									<p>Prix : <?=htmlentities($cart->getPrice())?>€</p>
+									<p>Date : <?=htmlentities($cart->getDate())?></p>
+								</div>
 					   <button class="achete">Valider le panier</button>
-											
+					</form>
 				  </div>
 			  </div>
 		</div>

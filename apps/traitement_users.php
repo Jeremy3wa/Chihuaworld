@@ -107,7 +107,7 @@ if (isset($_POST['action']))
 					{	
 						if (($error = $user->setEmail($_POST['email'])))
 							$errors[] = $error;
-						if (($error = $user->updatePassword($_POST['password'], )
+						if (($error = $user->updatePassword($_POST['password'])))
 							$errors[] = $error;
 						if (($error = $user->setName($_POST['name'])))
 							$errors[] = $error;
